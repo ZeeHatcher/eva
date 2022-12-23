@@ -4,14 +4,16 @@ var projectile: Projectile
 var test_speed
 var test_dir
 var damage
+var is_crit
 
 func before_each() -> void:
 	test_speed = rand_range(0, 1000)
 	test_dir = Vector2(randf(), randf())
 	damage = 1
+	is_crit = (randf() > 0.5)
 	
 	projectile = Projectile.new()
-	projectile.setup(damage, test_dir, test_speed)
+	projectile.setup(damage, test_dir, test_speed, is_crit)
 
 
 func test_move():
@@ -19,10 +21,7 @@ func test_move():
 	assert_ne(projectile.position, test_speed * test_dir)
 
 
-func test_hit():
-	pending()
-
-
 func test_despawn():
 	projectile.despawn()
 	assert_true(projectile.is_queued_for_deletion())
+
