@@ -36,3 +36,12 @@ func hit(target: KinematicBody2D) -> void:
 
 func _on_Projectile_body_entered(body) -> void:
 	hit(body)
+
+
+func despawn() -> void:
+	if is_instance_valid(self) and not is_queued_for_deletion():
+		queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	despawn()

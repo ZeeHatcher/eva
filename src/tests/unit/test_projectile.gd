@@ -21,3 +21,8 @@ func test_move():
 
 func test_hit():
 	pending()
+
+
+func test_despawn():
+	projectile.despawn()
+	assert_true(projectile.is_queued_for_deletion())
