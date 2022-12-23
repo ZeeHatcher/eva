@@ -1,16 +1,17 @@
 extends GutTest
 
 var projectile: Projectile
-var test_speed = 200
-var test_dir = Vector2(randi(), randi())
-
+var test_speed
+var test_dir
+var damage
 
 func before_each() -> void:
 	test_speed = rand_range(0, 1000)
 	test_dir = Vector2(randf(), randf())
+	damage = 1
 	
 	projectile = Projectile.new()
-	projectile.setup(test_speed, test_dir)
+	projectile.setup(damage, test_dir, test_speed)
 
 
 func test_move():
@@ -19,4 +20,4 @@ func test_move():
 
 
 func test_hit():
-	pass
+	pending()

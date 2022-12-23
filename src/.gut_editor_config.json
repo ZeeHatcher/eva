@@ -22,8 +22,8 @@
  "pre_run_script": "",
  "prefix": "test_",
  "selected": "test_projectile.gd",
- "should_exit": true,
- "should_exit_on_success": true,
+ "should_exit": false,
+ "should_exit_on_success": false,
  "should_maximize": false,
  "compact_mode": false,
  "show_help": false,
@@ -35,10 +35,10 @@
  "gut_on_top": true,
  "panel_options": {
   "font_name": "CourierPrime",
-  "font_size": 12,
+  "font_size": 30,
   "hide_result_tree": false,
   "hide_output_text": false,
-  "hide_settings": true,
+  "hide_settings": false,
   "use_colors": false
  }
 }
