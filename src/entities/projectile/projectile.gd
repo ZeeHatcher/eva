@@ -7,6 +7,7 @@ export(int) var damage := 1
 
 var direction := Vector2.ONE
 var velocity := Vector2.ZERO
+var crit := false
 
 
 func _ready() -> void:
@@ -30,6 +31,7 @@ func move(delta: float) -> void:
 
 func hit(target: KinematicBody2D) -> void:
 	target.hurt(damage)
+	queue_free()
 
 
 func _on_Projectile_body_entered(body) -> void:
