@@ -16,3 +16,7 @@ func before_each() -> void:
 func test_move():
 	projectile.move(1)
 	assert_ne(projectile.position, test_speed * test_dir)
+
+
+func test_hit():
+	pass
