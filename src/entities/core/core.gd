@@ -5,8 +5,16 @@ signal destroyed
 signal hit
 
 export var max_health := 3
+export var rotation_speed := 3
 
 onready var health := max_health
+
+onready var _arm := $Arm
+onready var _gun := $"%Gun"
+
+
+func _physics_process(delta: float) -> void:
+	_arm.rotation = wrapf(_arm.rotation + rotation_speed * delta, -PI, PI)
 
 
 func hit() -> void:
