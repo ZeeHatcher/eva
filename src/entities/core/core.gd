@@ -14,7 +14,8 @@ onready var _gun := $"%Gun"
 
 
 func _physics_process(delta: float) -> void:
-	_arm.rotation = wrapf(_arm.rotation + rotation_speed * delta, -PI, PI)
+	if not Input.is_action_pressed("action"):
+		_arm.rotation = wrapf(_arm.rotation + rotation_speed * delta, -PI, PI)
 
 
 func hit() -> void:
