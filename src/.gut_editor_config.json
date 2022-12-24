@@ -21,7 +21,7 @@
  "post_run_script": "",
  "pre_run_script": "",
  "prefix": "test_",
- "selected": null,
+ "selected": "test_core.gd",
  "should_exit": true,
  "should_exit_on_success": true,
  "should_maximize": false,
@@ -38,7 +38,7 @@
   "font_size": 12,
   "hide_result_tree": false,
   "hide_output_text": false,
-  "hide_settings": false,
+  "hide_settings": true,
   "use_colors": false
  }
 }

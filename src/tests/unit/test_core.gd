@@ -50,7 +50,15 @@ func test_heal_does_not_exceed_max_health() -> void:
 	assert_eq(core.health, 1)
 
 
+func test_arm_rotates_around_core_by_rotation_speed() -> void:
+	var core: Core = _create_core()
+	core.rotation_speed = 1
+	var prev_rotation: float = core._arm.rotation
+	gut.simulate(core, 1, 1)
+	assert_eq(core._arm.rotation, prev_rotation + 1)
+	
+
 func _create_core() -> Core:
 	var core: Core = CoreScene.instance()
-	add_child(core)
+	add_child_autofree(core)
 	return core
