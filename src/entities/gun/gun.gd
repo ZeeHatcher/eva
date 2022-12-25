@@ -88,10 +88,10 @@ func _update_boundaries_position() -> void:
 	var spread := _calculate_spread()
 	
 	var _left_points: PoolVector2Array = _left_spread_boundary.points
-	_left_points[1] = Vector2.LEFT.rotated(global_rotation - spread) * 128
+	_left_points[1] = Vector2.LEFT.rotated(rotation - spread) * 128
 	_left_spread_boundary.points = _left_points
 	
 	var _right_points: PoolVector2Array = _right_spread_boundary.points
-	_right_points[1] = Vector2.LEFT.rotated(global_rotation + spread) * 128
+	_right_points[1] = Vector2.LEFT.rotated(rotation + spread) * 128
 	_right_spread_boundary.points = _right_points
 	
