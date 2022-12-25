@@ -14,10 +14,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func setup(_damage:int, _direction: Vector2, _speed: int, _is_crit: bool = false) -> void:
+func setup(_damage: int, _direction: Vector2, _speed: int, _position: Vector2, _is_crit: bool = false) -> void:
 	damage = _damage
 	speed = _speed
-	direction = _direction 
+	direction = _direction
+	position = _position
 	is_crit = _is_crit
 
 
