@@ -20,8 +20,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("action"):
 		_charge(delta * charge_speed)
 		_update_boundaries_position()
-		
-	$ProgressBar.value = charge_level
 
 
 func _unhandled_input(_event: InputEvent):

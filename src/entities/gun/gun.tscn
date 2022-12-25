@@ -12,21 +12,17 @@ charge_speed = 5.0
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 2 )
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-margin_right = 185.0
-margin_bottom = 14.0
-max_value = 1.0
-value = 0.5
-
 [node name="Barrel" type="Position2D" parent="."]
 position = Vector2( -32, 0 )
 
 [node name="LeftSpreadBoundary" type="Line2D" parent="."]
+visible = false
 position = Vector2( -32, 0 )
 points = PoolVector2Array( 0, 0, -128, 0 )
 width = 2.0
 
 [node name="RightSpreadBoundary" type="Line2D" parent="."]
+visible = false
 position = Vector2( -32, 0 )
 points = PoolVector2Array( 0, 0, -128, 0 )
 width = 2.0
