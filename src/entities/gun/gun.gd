@@ -3,7 +3,14 @@ extends Node2D
 
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
-export var charge_speed := 10.0
+export var _charge_speed := 10.0
+export var _max_projectiles := 10
+export var _min_damage := 10
+export var _damage_coefficient := 100
+export var _min_speed := 100
+export var _speed_coefficient := 1000
+export var _max_spread_angle_degrees := 60
+export var _indicator_length := 128
 
 var charge_level: float
 
@@ -18,7 +25,7 @@ onready var _right_spread_boundary := $RightSpreadBoundary
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("action"):
-		_charge(delta * charge_speed)
+		_charge(delta * _charge_speed)
 		_update_boundaries_position()
 
 
@@ -49,9 +56,9 @@ func _reset_charge() -> void:
 
 
 func _shoot() -> void:
-	var projectile_count := int(charge_level * -10) + 10
-	var damage := charge_level * 100 + 10
-	var speed := charge_level * 900 + 100
+	var projectile_count := int(charge_level * -_max_projectiles) + _max_projectiles
+	var damage := charge_level * _damage_coefficient + _min_damage
+	var speed := charge_level * _speed_coefficient + _min_speed
 	var spread := _calculate_spread()
 	
 	for n in range(projectile_count):
@@ -76,7 +83,7 @@ func _calculate_direction(count: int, index: int, spread: float) -> Vector2:
 
 
 func _calculate_spread() -> float:
-	return range_lerp(charge_level, 1.0, 0.0, 0, deg2rad(60))
+	return range_lerp(charge_level, 1.0, 0.0, 0, deg2rad(_max_spread_angle_degrees))
 
 
 func _show_spread_boundaries(show: bool) -> void:
@@ -88,10 +95,10 @@ func _update_boundaries_position() -> void:
 	var spread := _calculate_spread()
 	
 	var _left_points: PoolVector2Array = _left_spread_boundary.points
-	_left_points[1] = Vector2.LEFT.rotated(rotation - spread) * 128
+	_left_points[1] = Vector2.LEFT.rotated(rotation - spread) * _indicator_length
 	_left_spread_boundary.points = _left_points
 	
 	var _right_points: PoolVector2Array = _right_spread_boundary.points
-	_right_points[1] = Vector2.LEFT.rotated(rotation + spread) * 128
+	_right_points[1] = Vector2.LEFT.rotated(rotation + spread) * _indicator_length
 	_right_spread_boundary.points = _right_points
 	
