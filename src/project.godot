@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Eva"
-run/main_scene="res://entities/projectile/projectile.tscn"
+run/main_scene="res://scenes/debug/debug.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
