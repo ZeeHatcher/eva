@@ -63,7 +63,6 @@ func _shoot() -> void:
 	
 	for n in range(projectile_count):
 		var projectile := ProjectileScene.instance()
-		var direction := global_rotation
 		
 		projectile.setup(
 				damage,

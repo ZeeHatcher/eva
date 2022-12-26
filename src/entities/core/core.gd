@@ -1,8 +1,9 @@
-extends Node2D
+extends Area2D
+class_name Core
 
 
 signal destroyed
-signal hit
+signal hurt
 
 export var max_health := 3
 export var rotation_speed := 3
@@ -28,9 +29,9 @@ func setup(ctx: Node) -> void:
 	_gun.setup(ctx)
 
 
-func hit() -> void:
+func hurt() -> void:
 	health = max(health - 1, 0)
-	emit_signal("destroyed" if health == 0 else "hit")
+	emit_signal("destroyed" if health == 0 else "hurt")
 
 
 func heal() -> void:

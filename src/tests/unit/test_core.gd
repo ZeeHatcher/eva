@@ -8,29 +8,29 @@ const CoreScene := preload("res://entities/core/core.tscn")
 func test_hit_decreases_health() -> void:
 	var core: Core = _create_core()
 	var prev_health := core.health
-	core.hit()
+	core.hurt()
 	assert_lt(core.health, prev_health)
 
 
 func test_hit_does_not_decrease_health_below_zero() -> void:
 	var core: Core = _create_core()
 	core.health = 0
-	core.hit()
+	core.hurt()
 	assert_eq(core.health, 0)
 
 
-func test_hit_emits_hit() -> void:
+func test_hit_emits_hurt() -> void:
 	var core: Core = _create_core()
 	watch_signals(core)
-	core.hit()
-	assert_signal_emitted(core, "hit")
+	core.hurt()
+	assert_signal_emitted(core, "hurt")
 
 
 func test_hit_emits_destroyed_when_health_reaches_zero() -> void:
 	var core: Core = _create_core()
 	watch_signals(core)
 	core.health = 1
-	core.hit()
+	core.hurt()
 	assert_signal_emitted(core, "destroyed")
 
 

@@ -31,15 +31,18 @@ func move(delta: float) -> void:
 	position += velocity
 
 
-func hit(target: KinematicBody2D) -> void:
+func hit(target: NPC) -> void:
 	target.hurt(damage)
 	
 	if not is_crit:
 		queue_free()
 
 
-func _on_Projectile_body_entered(body) -> void:
-	hit(body)
+func _on_Projectile_area_entered(npc: NPC):
+	if not npc:
+		return
+	
+	hit(npc)
 
 
 func despawn() -> void:

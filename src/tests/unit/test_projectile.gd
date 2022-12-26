@@ -13,7 +13,7 @@ func before_each() -> void:
 	is_crit = (randf() > 0.5)
 	
 	projectile = Projectile.new()
-	projectile.setup(damage, test_dir, test_speed, is_crit)
+	projectile.setup(damage, test_dir, test_speed, Vector2.ZERO, is_crit)
 
 
 func test_move():
