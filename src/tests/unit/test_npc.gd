@@ -85,3 +85,10 @@ func test_foe_hurts_core_when_sacrificed() -> void:
 	var core: Core = double(Core).new()
 	foe.sacrifice_to(core)
 	assert_called(core, "hurt")
+
+
+func test_friend_heals_core_when_sacrificed() -> void:
+	var friend := Friend.new()
+	var core: Core = double(Core).new()
+	friend.sacrifice_to(core)
+	assert_called(core, "heal")
