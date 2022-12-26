@@ -2,6 +2,7 @@ extends Node2D
 
 
 const FoeScene := preload("res://entities/npcs/foe/foe.tscn")
+const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -10,6 +11,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.scancode == KEY_Q and event.pressed:
 		_spawn_npc(FoeScene)
+	
+	if event.scancode == KEY_W and event.pressed:
+		_spawn_npc(FriendScene)
 
 
 func _spawn_npc(scene: PackedScene) -> void:
