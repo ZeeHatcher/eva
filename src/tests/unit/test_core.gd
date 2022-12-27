@@ -52,10 +52,10 @@ func test_heal_does_not_exceed_max_health() -> void:
 
 func test_arm_rotates_around_core_by_rotation_speed() -> void:
 	var core: Core = _create_core()
-	core.rotation_speed = 1
-	var prev_rotation: float = core._arm.rotation
+	core.rotation_speed_degrees = 45
+	var prev_rotation: float = core._arm.rotation_degrees
 	gut.simulate(core, 1, 1)
-	assert_eq(core._arm.rotation, prev_rotation + 1)
+	assert_eq(core._arm.rotation_degrees, prev_rotation + 45)
 	
 
 func _create_core() -> Core:

@@ -15,5 +15,6 @@ script = ExtResource( 1 )
 position = Vector2( -64, -64 )
 
 [node name="IntervalTimer" type="Timer" parent="."]
+autostart = true
 
-[connection signal="timeout" from="IntervalTimer" to="." method="spawn"]
+[connection signal="timeout" from="IntervalTimer" to="." method="spawn_pack"]

@@ -8,7 +8,7 @@ const SpawnerScene := preload("res://systems/spawner/spawner.tscn")
 func test_spawn_adds_npc_to_tree() -> void:
 	var spawner := _instance_spawner()
 	var prev_count = get_child_count()
-	spawner.spawn()
+	spawner.spawn(Vector2.ZERO)
 	assert_eq(get_child_count(), prev_count + 1)
 
 
@@ -18,7 +18,7 @@ func test_start_begins_spawning() -> void:
 	var prev_count = get_child_count()
 	spawner.start()
 	yield(yield_for(0.21), YIELD)
-	assert_eq(get_child_count(), prev_count + 2)
+	assert_gt(get_child_count(), prev_count)
 
 
 func _instance_spawner() -> Spawner:
