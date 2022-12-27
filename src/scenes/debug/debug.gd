@@ -44,7 +44,6 @@ func _on_Stopwatch_tick() -> void:
 	var seconds: int = _stopwatch.seconds()
 	_spawner.spawn_interval = exp(seconds * -0.01 + 1.1)
 	_spawner.max_pack_size = floor(seconds * 0.025 + 1)
-	print(points)
 
 
 func _start_game() -> void:
@@ -68,3 +67,7 @@ func _update_points(pts: int) -> void:
 func _on_GameOver_retry():
 	var game_scene = load("res://scenes/debug/debug.tscn")
 	get_tree().change_scene_to(game_scene)
+
+
+func _on_Core_destroyed():
+	$"%GameOver".update_score(points)

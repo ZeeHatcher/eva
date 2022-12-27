@@ -40,12 +40,14 @@ margin_right = 1293.0
 margin_bottom = 749.0
 
 [node name="GameOver" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 6 )]
+unique_name_in_owner = true
 visible = false
 margin_left = -10.0
 margin_top = 178.0
 margin_right = 1930.0
 margin_bottom = 901.0
 
+[connection signal="destroyed" from="Core" to="." method="_on_Core_destroyed"]
 [connection signal="destroyed" from="Core" to="CanvasLayer/ViewportContainer/CenterContainer/GameOver" method="_on_Core_destroyed"]
 [connection signal="spawned" from="Spawner" to="." method="_on_Spawner_spawned"]
 [connection signal="tick" from="Stopwatch" to="." method="_on_Stopwatch_tick"]
