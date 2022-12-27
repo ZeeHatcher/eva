@@ -6,7 +6,7 @@ signal destroyed
 signal hurt
 
 export var max_health := 3
-export var rotation_speed := 3
+export var rotation_speed_degrees := 180
 
 onready var health := max_health
 onready var context: Node = get_parent()
@@ -21,7 +21,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("action"):
-		_arm.rotation = wrapf(_arm.rotation + rotation_speed * delta, -PI, PI)
+		var target_angle: float = _arm.rotation + deg2rad(rotation_speed_degrees) * delta
+		_arm.rotation = wrapf(target_angle, -PI, PI)
 
 
 func setup(ctx: Node) -> void:
