@@ -3,7 +3,7 @@ extends Node2D
 
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
-export var _charge_speed := 10.0
+export var _charge_speed := 1.0
 export var _max_projectiles := 10
 export var _min_damage := 10
 export var _damage_coefficient := 100
@@ -47,7 +47,7 @@ func setup(ctx: Node) -> void:
 
 func _charge(val: float) -> void:
 	_x += val
-	charge_level = cos(_x) * -0.5 + 0.5 # Map cosine to values between 0 and 1
+	charge_level = 2 * abs(_x - floor(_x + 0.5)) # Map cosine to values between 0 and 1
 
 
 func _reset_charge() -> void:
