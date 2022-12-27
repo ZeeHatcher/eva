@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/core/core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/debug/debug.gd" type="Script" id=2]
-[ext_resource path="res://systems/spawner/spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://etc/spawner/spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://etc/stopwatch/stopwatch.gd" type="Script" id=4]
 
 [node name="Debug" type="Node2D"]
 script = ExtResource( 2 )
@@ -16,3 +17,8 @@ position = Vector2( 960, 540 )
 position = Vector2( 960, 544 )
 current = true
 zoom = Vector2( 2, 2 )
+
+[node name="Stopwatch" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[connection signal="tick" from="Stopwatch" to="." method="_on_Stopwatch_tick"]

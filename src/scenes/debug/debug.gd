@@ -5,11 +5,13 @@ const FoeScene := preload("res://entities/npcs/foe/foe.tscn")
 const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 
 onready var _spawner := $Spawner
+onready var _stopwatch := $Stopwatch
 
 
 func _ready() -> void:
 	randomize()
 	_spawner.start()
+	_stopwatch.start()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -34,3 +36,9 @@ func _spawn_npc(scene: PackedScene) -> void:
 	npc.target = $Core
 	npc.position = get_viewport().get_mouse_position()
 	add_child(npc)
+
+
+func _on_Stopwatch_tick():
+	var seconds: int = _stopwatch.seconds()
+	_spawner.spawn_interval = exp(seconds * -0.01 + 1.1)
+	_spawner.max_pack_size = floor(seconds * 0.025 + 1)
