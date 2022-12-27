@@ -21,6 +21,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.scancode == KEY_W and event.pressed:
 		_spawn_npc(FriendScene)
+	
+	if event.scancode == KEY_A and event.pressed:
+		_spawner.start()
+	
+	if event.scancode == KEY_S and event.pressed:
+		_spawner.stop()
 
 
 func _spawn_npc(scene: PackedScene) -> void:
