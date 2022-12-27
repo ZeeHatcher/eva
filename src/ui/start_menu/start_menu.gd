@@ -1,4 +1,4 @@
-extends CenterContainer
+extends VBoxContainer
 
 
 signal start_game
