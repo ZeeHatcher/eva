@@ -8,6 +8,7 @@ onready var _spawner := $Spawner
 
 
 func _ready() -> void:
+	randomize()
 	_spawner.start()
 
 

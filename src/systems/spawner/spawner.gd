@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func spawn() -> void:
 	_spawn_point.offset = randi()
-	var npc := FoeScene.instance()
+	var npc := _randomize_npc()
 	npc.global_position = _spawn_point.global_position
 	context.add_child(npc)
 
@@ -41,3 +41,9 @@ func get_spawn_interval() -> float:
 		return 0.0
 		
 	return _timer.wait_time
+
+
+func _randomize_npc() -> NPC:
+	var roll := randi() % 10
+	var scene := FriendScene if roll == 0 else FoeScene
+	return scene.instance() as NPC
