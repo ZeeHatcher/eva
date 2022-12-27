@@ -60,6 +60,7 @@ func _shoot() -> void:
 	var damage := charge_level * _damage_coefficient + _min_damage
 	var speed := charge_level * _speed_coefficient + _min_speed
 	var spread := _calculate_spread()
+	var is_crit := (projectile_count == 1)
 	
 	for n in range(projectile_count):
 		var projectile := ProjectileScene.instance()
@@ -68,7 +69,8 @@ func _shoot() -> void:
 				damage,
 				_calculate_direction(projectile_count, n, spread),
 				speed,
-				_barrel.global_position)
+				_barrel.global_position,
+				is_crit)
 		context.add_child(projectile)
 
 
