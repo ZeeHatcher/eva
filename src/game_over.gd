@@ -11,4 +11,9 @@ func update_score(score) -> void:
 
 
 func _on_Button_pressed():
+	visible = false
 	emit_signal('retry')
+
+
+func _on_Core_destroyed():
+	visible = true
