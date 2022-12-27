@@ -47,7 +47,7 @@ func setup(ctx: Node) -> void:
 
 func _charge(val: float) -> void:
 	_x += val
-	charge_level = cos(_x) * -0.5 + 0.5
+	charge_level = cos(_x) * -0.5 + 0.5 # Map cosine to values between 0 and 1
 
 
 func _reset_charge() -> void:

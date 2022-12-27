@@ -6,6 +6,8 @@ const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 
 export var spawn_interval := 1.0 setget set_spawn_interval, get_spawn_interval
 export var max_pack_size := 3 setget set_max_pack_size
+export var max_offset_distance := 100
+export var friend_spawn_chance := 0.1 setget set_friend_spawn_chance
 
 onready var context: Node = get_parent()
 
@@ -57,14 +59,18 @@ func set_max_pack_size(val: int) -> void:
 	max_pack_size = max(val, 1)
 
 
+func set_friend_spawn_chance(val: float) -> void:
+	friend_spawn_chance = clamp(val, 0.0, 1.0)
+
+
 func _randomize_npc() -> NPC:
-	var roll := _rng.randi_range(1, 10)
-	var scene := FriendScene if roll == 1 else FoeScene
+	var roll := _rng.randf()
+	var scene := FriendScene if roll <= friend_spawn_chance else FoeScene
 	return scene.instance() as NPC
 
 
 func _offset_position(pos: Vector2) -> Vector2:
 	var angle := _rng.randf_range(-PI, PI)
 	var direction := Vector2.RIGHT.rotated(angle)
-	var vector := direction * randf() * 100
+	var vector := direction * randf() * max_offset_distance
 	return pos + vector
