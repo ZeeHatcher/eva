@@ -1,6 +1,8 @@
 extends Path2D
 
 
+signal spawned(npc)
+
 const FoeScene := preload("res://entities/npcs/foe/foe.tscn")
 const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 
@@ -33,6 +35,7 @@ func spawn(pos: Vector2) -> void:
 	var npc := _randomize_npc()
 	npc.global_position = pos
 	context.add_child(npc)
+	emit_signal("spawned", npc)
 
 
 func start() -> void:

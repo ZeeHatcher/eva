@@ -46,5 +46,6 @@ margin_top = 178.0
 margin_right = 1930.0
 margin_bottom = 901.0
 
+[connection signal="spawned" from="Spawner" to="." method="_on_Spawner_spawned"]
 [connection signal="tick" from="Stopwatch" to="." method="_on_Stopwatch_tick"]
 [connection signal="start_game" from="CanvasLayer/ViewportContainer/CenterContainer/StartMenu" to="." method="_on_StartMenu_start_game"]
