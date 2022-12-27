@@ -12,6 +12,12 @@ export var health := 100 setget set_health
 var target: Node2D
 
 
+func _ready() -> void:
+	var players := get_tree().get_nodes_in_group("players")
+	if not players.empty():
+		target = players[0]
+	
+
 func _physics_process(delta) -> void:
 	if target:
 		var direction := position.direction_to(target.position)

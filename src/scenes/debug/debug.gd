@@ -4,6 +4,12 @@ extends Node2D
 const FoeScene := preload("res://entities/npcs/foe/foe.tscn")
 const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 
+onready var _spawner := $Spawner
+
+
+func _ready() -> void:
+	_spawner.start()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventKey:
