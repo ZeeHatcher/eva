@@ -12,6 +12,11 @@ onready var _stopwatch := $Stopwatch
 
 func _ready() -> void:
 	randomize()
+	_spawner.stop()
+	_stopwatch.stop()
+
+
+func _start_game() -> void:
 	_spawner.start()
 	_stopwatch.start()
 
@@ -48,7 +53,7 @@ func _on_Stopwatch_tick() -> void:
 
 
 func _on_StartMenu_start_game():
-	pass
+	_start_game()
 
 
 func _on_Spawner_spawned(npc: NPC) -> void:
