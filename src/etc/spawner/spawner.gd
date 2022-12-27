@@ -44,15 +44,13 @@ func stop() -> void:
 
 
 func set_spawn_interval(val: float) -> void:
+	spawn_interval = val
 	if _timer:
 		_timer.wait_time = val
 
 
 func get_spawn_interval() -> float:
-	if not _timer:
-		return 0.0
-		
-	return _timer.wait_time
+	return spawn_interval
 
 
 func set_max_pack_size(val: int) -> void:
