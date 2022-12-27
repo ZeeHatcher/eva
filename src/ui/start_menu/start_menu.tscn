@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/font_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/start_menu/start_menu.gd" type="Script" id=3]
+
+[node name="StartMenu" type="VBoxContainer"]
+margin_right = 666.0
+margin_bottom = 419.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 666.0
+margin_bottom = 261.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "EVA"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="."]
+margin_top = 265.0
+margin_right = 666.0
+margin_bottom = 419.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+text = "START"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

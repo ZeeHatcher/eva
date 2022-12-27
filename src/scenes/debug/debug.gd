@@ -42,3 +42,7 @@ func _on_Stopwatch_tick():
 	var seconds: int = _stopwatch.seconds()
 	_spawner.spawn_interval = exp(seconds * -0.01 + 1.1)
 	_spawner.max_pack_size = floor(seconds * 0.025 + 1)
+
+
+func _on_StartMenu_start_game():
+	pass
