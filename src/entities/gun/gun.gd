@@ -14,6 +14,7 @@ export var _indicator_length := 128
 
 var charge_level: float
 
+var _enabled := true
 var _x: float
 
 onready var context: Node = get_parent()
@@ -24,12 +25,18 @@ onready var _right_spread_boundary := $RightSpreadBoundary
 
 
 func _physics_process(delta: float) -> void:
+	if not _enabled:
+		return
+	
 	if Input.is_action_pressed("action"):
 		_charge(delta * _charge_speed)
 		_update_boundaries_position()
 
 
 func _unhandled_input(event: InputEvent):
+	if not _enabled:
+		return
+	
 	if event.is_action_pressed("action"):
 		_reset_charge()
 		_show_spread_boundaries(true)
@@ -42,6 +49,14 @@ func _unhandled_input(event: InputEvent):
 
 func setup(ctx: Node) -> void:
 	context = ctx
+
+
+func enable() -> void:
+	_enabled = true
+
+
+func disable() -> void:
+	_enabled = false
 
 
 func _charge(val: float) -> void:

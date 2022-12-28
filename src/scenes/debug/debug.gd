@@ -8,12 +8,14 @@ var points := 0
 
 onready var _spawner := $Spawner
 onready var _stopwatch := $Stopwatch
+onready var _core := $Core
 
 
 func _ready() -> void:
 	randomize()
 	_spawner.stop()
 	_stopwatch.stop()
+	_core.disable()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -49,6 +51,7 @@ func _on_Stopwatch_tick() -> void:
 func _start_game() -> void:
 	_spawner.start()
 	_stopwatch.start()
+	_core.enable()
 
 
 func _on_StartMenu_start_game():
