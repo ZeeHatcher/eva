@@ -10,16 +10,21 @@ var velocity := Vector2.ZERO
 var is_crit := false
 
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-func setup(_damage: int, _direction: Vector2, _speed: int, _position: Vector2, _is_crit: bool = false) -> void:
+func setup(
+		_damage: int, _direction: Vector2, _speed: int,
+		_position: Vector2, size_scale: float, _is_crit: bool = false
+) -> void:
 	damage = _damage
 	speed = _speed
 	direction = _direction
 	position = _position
 	is_crit = _is_crit
+	
+	var hitbox := $Hitbox
+	var sprite := $Sprite
+	
+	hitbox.shape.radius = hitbox.shape.radius * size_scale
+	sprite.scale = sprite.scale * size_scale
 
 
 func _physics_process(delta: float) -> void:
