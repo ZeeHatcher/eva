@@ -16,6 +16,7 @@ export var _indicator_length := 128
 var charge_level: float
 
 var _enabled := true
+var _can_shoot := true
 var _x: float
 
 onready var context: Node = get_parent()
@@ -23,13 +24,15 @@ onready var context: Node = get_parent()
 onready var _barrel := $Barrel
 onready var _left_spread_boundary := $LeftSpreadBoundary
 onready var _right_spread_boundary := $RightSpreadBoundary
+onready var _cooldown := $CooldownTimer
 
 
 func _physics_process(delta: float) -> void:
 	if not _enabled:
 		return
 	
-	if Input.is_action_pressed("action"):
+	if _can_shoot and Input.is_action_pressed("action"):
+		_show_spread_boundaries(true)
 		_charge(delta * _charge_speed)
 		_update_boundaries_position()
 
@@ -40,10 +43,9 @@ func _unhandled_input(event: InputEvent):
 	
 	if event.is_action_pressed("action"):
 		_reset_charge()
-		_show_spread_boundaries(true)
 		_update_boundaries_position()
 		
-	if event.is_action_released("action"):
+	if _can_shoot and event.is_action_released("action"):
 		_show_spread_boundaries(false)
 		_shoot()
 
@@ -76,7 +78,7 @@ func _shoot() -> void:
 	var speed := charge_level * _speed_coefficient + _min_speed
 	var size_scale := charge_level * _size_coefficient + 1
 	var spread := _calculate_spread()
-	var is_crit := (projectile_count == 1)
+	var is_crit := projectile_count == 1
 	
 	for n in range(projectile_count):
 		var projectile := ProjectileScene.instance()
@@ -88,6 +90,9 @@ func _shoot() -> void:
 				_barrel.global_position,
 				size_scale,
 				is_crit)
+	
+	_can_shoot = false
+	_cooldown.start()
 
 
 func _calculate_direction(count: int, index: int, spread: float) -> Vector2:
@@ -119,3 +124,6 @@ func _update_boundaries_position() -> void:
 	_right_points[1] = Vector2.LEFT.rotated(rotation + spread) * _indicator_length
 	_right_spread_boundary.points = _right_points
 	
+
+func _on_CooldownTimer_timeout():
+	_can_shoot = true

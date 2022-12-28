@@ -26,3 +26,9 @@ position = Vector2( -32, 0 )
 points = PoolVector2Array( 0, 0, -128, 0 )
 width = 2.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
