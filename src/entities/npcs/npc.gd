@@ -21,6 +21,9 @@ func _ready() -> void:
 	
 
 func _physics_process(delta) -> void:
+	if not is_instance_valid(target):
+		target = null
+	
 	if target:
 		var direction := position.direction_to(target.position)
 		position += direction * move_speed * delta

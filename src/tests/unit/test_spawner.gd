@@ -1,8 +1,8 @@
 extends GutTest
 
 
-const Spawner := preload("res://systems/spawner/spawner.gd")
-const SpawnerScene := preload("res://systems/spawner/spawner.tscn")
+const Spawner := preload("res://etc/spawner/spawner.gd")
+const SpawnerScene := preload("res://etc/spawner/spawner.tscn")
 
 
 func test_spawn_adds_npc_to_tree() -> void:

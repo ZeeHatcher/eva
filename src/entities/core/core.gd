@@ -32,7 +32,12 @@ func setup(ctx: Node) -> void:
 
 func hurt() -> void:
 	health = max(health - 1, 0)
-	emit_signal("destroyed" if health == 0 else "hurt")
+	
+	if health == 0:
+		emit_signal("destroyed")
+		queue_free()
+	else:
+		emit_signal("hurt")
 
 
 func heal() -> void:
