@@ -29,16 +29,15 @@ func _physics_process(delta: float) -> void:
 		_update_boundaries_position()
 
 
-func _unhandled_input(_event: InputEvent):
-	if Input.is_action_just_pressed("action"):
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("action"):
 		_reset_charge()
 		_show_spread_boundaries(true)
-	
-	if Input.is_action_just_released("action"):
+		_update_boundaries_position()
+		
+	if event.is_action_released("action"):
 		_show_spread_boundaries(false)
 		_shoot()
-	
-	_update_boundaries_position()
 
 
 func setup(ctx: Node) -> void:
