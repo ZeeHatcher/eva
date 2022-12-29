@@ -37,6 +37,7 @@ func move(delta: float) -> void:
 
 
 func hit(target: NPC) -> void:
+	print("hit")
 	target.hurt(damage)
 	
 	if not is_crit:
@@ -45,6 +46,9 @@ func hit(target: NPC) -> void:
 
 func _on_Projectile_area_entered(npc: NPC):
 	if not npc or npc.is_queued_for_deletion():
+		return
+	
+	if is_queued_for_deletion():
 		return
 	
 	hit(npc)
