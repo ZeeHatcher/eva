@@ -1,10 +1,14 @@
 extends GutTest
 
+
+const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
+
 var projectile: Projectile
 var test_speed
 var test_dir
 var damage
 var is_crit
+
 
 func before_each() -> void:
 	test_speed = rand_range(0, 1000)
@@ -12,7 +16,8 @@ func before_each() -> void:
 	damage = 1
 	is_crit = (randf() > 0.5)
 	
-	projectile = Projectile.new()
+	projectile = ProjectileScene.instance()
+	add_child(projectile)
 	projectile.setup(damage, test_dir, test_speed, Vector2.ZERO, 1.0, is_crit)
 
 
