@@ -37,7 +37,6 @@ func move(delta: float) -> void:
 
 
 func hit(target: NPC) -> void:
-	print("hit")
 	target.hurt(damage)
 	
 	if not is_crit:
