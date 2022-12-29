@@ -9,6 +9,7 @@ var points := 0
 onready var _spawner := $Spawner
 onready var _stopwatch := $Stopwatch
 onready var _core := $Core
+onready	var _game_over := $"%GameOver"
 
 
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _ready() -> void:
 	_spawner.stop()
 	_stopwatch.stop()
 	_core.disable()
+	_game_over.hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -76,4 +78,5 @@ func _on_GameOver_retry():
 
 
 func _on_Core_destroyed():
-	$"%GameOver".update_score(points)
+	_game_over.update_score(points)
+	_game_over.show()
