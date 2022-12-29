@@ -52,6 +52,9 @@ func _start_game() -> void:
 	_spawner.start()
 	_stopwatch.start()
 	_core.enable()
+	
+	_spawner.spawn_interval = 3.00417 # exp(1.1)
+	_spawner.max_pack_size = 1
 
 
 func _on_StartMenu_start_game():
