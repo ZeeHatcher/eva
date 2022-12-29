@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not _enabled or not Input.is_action_pressed("action"):
+	if not _enabled or not _gun.can_shoot or not Input.is_action_pressed("action"):
 		var target_angle: float = _arm.rotation + deg2rad(rotation_speed_degrees) * delta
 		_arm.rotation = wrapf(target_angle, -PI, PI)
 

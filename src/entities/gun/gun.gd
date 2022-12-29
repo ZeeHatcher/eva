@@ -14,9 +14,9 @@ export var _size_coefficient := 3.0
 export var _indicator_length := 128
 
 var charge_level: float
+var can_shoot := true
 
 var _enabled := true
-var _can_shoot := true
 var _x: float
 
 onready var context: Node = get_parent()
@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	if not _enabled:
 		return
 	
-	if _can_shoot and Input.is_action_pressed("action"):
+	if can_shoot and Input.is_action_pressed("action"):
 		_show_spread_boundaries(true)
 		_charge(delta * _charge_speed)
 		_update_boundaries_position()
@@ -45,7 +45,7 @@ func _unhandled_input(event: InputEvent):
 		_reset_charge()
 		_update_boundaries_position()
 		
-	if _can_shoot and event.is_action_released("action"):
+	if can_shoot and event.is_action_released("action"):
 		_show_spread_boundaries(false)
 		_shoot()
 
@@ -91,7 +91,7 @@ func _shoot() -> void:
 				size_scale,
 				is_crit)
 	
-	_can_shoot = false
+	can_shoot = false
 	_cooldown.start()
 
 
@@ -126,4 +126,4 @@ func _update_boundaries_position() -> void:
 	
 
 func _on_CooldownTimer_timeout():
-	_can_shoot = true
+	can_shoot = true
