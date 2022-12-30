@@ -27,7 +27,7 @@ func spawn_pack() -> void:
 	_spawn_point.unit_offset = _rng.randf()
 	var pack_size := _rng.randi_range(1, max_pack_size)
 	
-	for i in range(pack_size):
+	for _i in range(pack_size):
 		spawn(_offset_position(_spawn_point.global_position))
 
 

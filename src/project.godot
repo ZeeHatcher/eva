@@ -66,6 +66,12 @@ config/name="Eva"
 run/main_scene="res://scenes/debug/debug.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/narrowing_conversion=false
+gdscript/warnings/return_value_discarded=false
+gdscript/warnings/integer_division=false
+
 [display]
 
 window/size/width=1920
