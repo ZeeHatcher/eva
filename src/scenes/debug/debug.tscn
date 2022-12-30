@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/core/core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/debug/debug.gd" type="Script" id=2]
@@ -12,8 +12,22 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -256, -256, 0, 0, 0, 0, 2176, -256, 0, 0, 0, 0, 2176, 1336, 0, 0, 0, 0, -256, 1336, 0, 0, 0, 0, -256, -256 )
 }
 
+[sub_resource type="Environment" id=2]
+background_mode = 4
+tonemap_mode = 1
+ssao_radius = 0.1
+ssao_intensity = 0.0
+glow_enabled = true
+glow_levels/4 = true
+glow_blend_mode = 1
+glow_hdr_threshold = 0.62
+
 [node name="Debug" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -256, -256, -256, 1336, 2176, 1336, 2176, -256 )
 
 [node name="Core" parent="." instance=ExtResource( 1 )]
 position = Vector2( 960, 540 )
@@ -27,6 +41,9 @@ zoom = Vector2( 2, 2 )
 
 [node name="Stopwatch" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
