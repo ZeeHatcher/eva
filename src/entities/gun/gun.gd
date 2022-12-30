@@ -74,6 +74,9 @@ func _reset_charge() -> void:
 
 func _shoot() -> void:
 	var projectile_count := int(charge_level * -_max_projectiles) + _max_projectiles
+	if projectile_count % 2 == 0:
+		projectile_count += 1
+	
 	var damage := charge_level * _damage_coefficient + _min_damage
 	var speed := charge_level * _speed_coefficient + _min_speed
 	var size_scale := charge_level * _size_coefficient + 1
