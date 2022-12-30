@@ -1,6 +1,9 @@
 extends Node2D
 
 
+signal shot(charge_level)
+signal reloaded
+
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 
 export var _charge_speed := 1.0
@@ -94,6 +97,7 @@ func _shoot() -> void:
 				size_scale,
 				is_crit)
 	
+	emit_signal("shot", charge_level)
 	can_shoot = false
 	_cooldown.start()
 
@@ -130,3 +134,4 @@ func _update_boundaries_position() -> void:
 
 func _on_CooldownTimer_timeout():
 	can_shoot = true
+	emit_signal("reloaded")

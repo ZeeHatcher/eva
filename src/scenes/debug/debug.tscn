@@ -73,6 +73,7 @@ margin_right = 1930.0
 margin_bottom = 843.0
 
 [connection signal="destroyed" from="Core" to="." method="_on_Core_destroyed"]
+[connection signal="shot" from="Core/Arm/Gun" to="." method="_on_Gun_shot"]
 [connection signal="spawned" from="Spawner" to="." method="_on_Spawner_spawned"]
 [connection signal="tick" from="Stopwatch" to="." method="_on_Stopwatch_tick"]
 [connection signal="start_game" from="CanvasLayer/ViewportContainer/CenterContainer/StartMenu" to="." method="_on_StartMenu_start_game"]

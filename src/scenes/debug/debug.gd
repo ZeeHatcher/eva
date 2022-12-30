@@ -10,6 +10,7 @@ onready var _spawner := $Spawner
 onready var _stopwatch := $Stopwatch
 onready var _core := $Core
 onready	var _game_over := $"%GameOver"
+onready var _camera := $Camera
 
 
 func _ready() -> void:
@@ -80,3 +81,7 @@ func _on_GameOver_retry():
 func _on_Core_destroyed():
 	_game_over.update_score(points)
 	_game_over.show()
+
+
+func _on_Gun_shot(charge_level: float):
+	_camera.shake(charge_level * 5 + 1)
