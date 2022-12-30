@@ -10,6 +10,8 @@ radius = 25.02
 position = Vector2( 506, 289 )
 collision_layer = 2
 script = ExtResource( 1 )
+move_speed = 50
+health = 50
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0.352941, 0.352941, 1 )

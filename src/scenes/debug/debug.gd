@@ -46,8 +46,8 @@ func _spawn_npc(scene: PackedScene) -> void:
 
 func _on_Stopwatch_tick() -> void:
 	var seconds: int = _stopwatch.seconds()
-	_spawner.spawn_interval = exp(seconds * -0.01 + 1.1)
-	_spawner.max_pack_size = floor(seconds * 0.025 + 1)
+	_spawner.spawn_interval = max(exp(seconds * -0.005 + 1.1), 1)
+	_spawner.max_pack_size = min(floor(seconds * 0.025 + 1), 5)
 
 
 func _start_game() -> void:
@@ -55,7 +55,7 @@ func _start_game() -> void:
 	_stopwatch.start()
 	_core.enable()
 	
-	_spawner.spawn_interval = 3.00417 # exp(1.1)
+	_spawner.spawn_interval = 3 # exp(1.1)
 	_spawner.max_pack_size = 1
 
 
