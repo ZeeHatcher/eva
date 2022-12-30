@@ -9,4 +9,3 @@ func _init() -> void:
 
 func _sacrifice_to(core: Core) -> void:
 	core.heal()
-

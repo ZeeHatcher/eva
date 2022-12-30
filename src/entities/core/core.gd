@@ -15,10 +15,13 @@ onready var context: Node = get_parent()
 
 onready var _arm := $Arm
 onready var _gun := $"%Gun"
+onready var _sprite := $Sprite
+onready var _hit_flash := $HitFlash 
 
 
 func _ready() -> void:
 	_gun.setup(context)
+	_hit_flash.original_color = _sprite.modulate
 
 
 func _physics_process(delta: float) -> void:
@@ -40,6 +43,7 @@ func hurt() -> void:
 		queue_free()
 	else:
 		emit_signal("hurt")
+		_hit_flash.flash(_sprite)
 
 
 func heal() -> void:

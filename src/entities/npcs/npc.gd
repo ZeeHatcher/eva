@@ -13,11 +13,16 @@ var target: Node2D
 var points_on_death: int
 var points_on_sacrifice: int
 
+onready var _sprite := $Sprite
+onready var _hit_flash := $HitFlash
+
 
 func _ready() -> void:
 	var players := get_tree().get_nodes_in_group("players")
 	if not players.empty():
 		target = players[0]
+	
+	_hit_flash.original_color = _sprite.modulate
 	
 
 func _physics_process(delta) -> void:
@@ -38,6 +43,7 @@ func hurt(damage: int) -> void:
 		queue_free()
 	else:
 		emit_signal("hurt")
+		_hit_flash.flash(_sprite)
 
 
 func sacrifice_to(core: Core) -> void:

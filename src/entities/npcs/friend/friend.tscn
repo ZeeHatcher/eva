@@ -1,23 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/npcs/friend/friend.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/filled_circle_256x256.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/filled_circle.png" type="Texture" id=2]
+[ext_resource path="res://entities/npcs/npc.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 17.0294
+radius = 23.0217
 
-[node name="Friend" type="Area2D"]
-position = Vector2( 508, 297 )
-collision_layer = 2
+[node name="Friend" instance=ExtResource( 3 )]
 script = ExtResource( 1 )
 health = 80
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.27451, 0.541176, 1, 1 )
-scale = Vector2( 0.5, 0.5 )
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.25, 0.806641, 1, 1 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
-
-[connection signal="area_entered" from="." to="." method="sacrifice_to"]

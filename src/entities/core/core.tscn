@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/core/core.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/filled_circle_256x256.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/filled_circle.png" type="Texture" id=2]
 [ext_resource path="res://entities/gun/gun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://etc/hit_flash/hit_flash.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 33.2415
@@ -18,7 +19,7 @@ rotation_speed_degrees = 135
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.894118, 0.0235294, 1 )
+modulate = Color( 1, 0.9125, 0.25, 1 )
 texture = ExtResource( 2 )
 
 [node name="Arm" type="Position2D" parent="."]
@@ -26,3 +27,6 @@ texture = ExtResource( 2 )
 [node name="Gun" parent="Arm" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 position = Vector2( -72, 0 )
+
+[node name="HitFlash" type="Node" parent="."]
+script = ExtResource( 4 )
