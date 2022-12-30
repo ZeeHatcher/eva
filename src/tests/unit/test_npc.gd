@@ -1,6 +1,9 @@
 extends GutTest
 
 
+const NPCScene := preload("res://entities/npcs/npc.tscn")
+
+
 func test_move_speed_does_not_go_below_zero() -> void:
 	var npc := NPC.new()
 	npc.move_speed = -1
@@ -36,14 +39,14 @@ func test_looks_at_target() -> void:
 
 
 func test_hurt_reduces_health_by_damage() -> void:
-	var npc := NPC.new()
+	var npc := _instance_npc()
 	npc.health = 100
 	npc.hurt(10)
 	assert_eq(npc.health, 90)
 
 
 func test_hurt_emits_hurt() -> void:
-	var npc := NPC.new()
+	var npc := _instance_npc()
 	watch_signals(npc)
 	npc.health = 100
 	npc.hurt(1)
@@ -51,7 +54,7 @@ func test_hurt_emits_hurt() -> void:
 
 
 func test_hurt_emits_died_when_health_reaches_zero() -> void:
-	var npc := NPC.new()
+	var npc := _instance_npc()
 	watch_signals(npc)
 	npc.health = 1
 	npc.hurt(1)
@@ -59,7 +62,7 @@ func test_hurt_emits_died_when_health_reaches_zero() -> void:
 
 
 func test_hurt_despawns_when_health_reaches_zero() -> void:
-	var npc := NPC.new()
+	var npc := _instance_npc()
 	npc.health = 1
 	npc.hurt(1)
 	assert_true(npc.is_queued_for_deletion())
@@ -92,3 +95,9 @@ func test_friend_heals_core_when_sacrificed() -> void:
 	var core: Core = double(Core).new()
 	friend.sacrifice_to(core)
 	assert_called(core, "heal")
+
+
+func _instance_npc() -> NPC:
+	var npc := NPCScene.instance()
+	add_child(npc)
+	return npc as NPC
