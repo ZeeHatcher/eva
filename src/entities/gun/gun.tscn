@@ -34,7 +34,7 @@ width = 2.0
 default_color = Color( 0.4, 0.501961, 1, 1 )
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.3
 one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
