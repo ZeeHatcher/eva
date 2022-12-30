@@ -45,6 +45,7 @@ decay_weight = 0.1
 
 [node name="Shaker" type="Node" parent="."]
 script = ExtResource( 8 )
+min_gun_shot_shake = 2
 
 [node name="Stopwatch" type="Node" parent="."]
 script = ExtResource( 4 )

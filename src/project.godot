@@ -70,7 +70,6 @@ _global_script_class_icons={
 
 config/name="Eva"
 run/main_scene="res://scenes/debug/debug.tscn"
-config/icon="res://icon.png"
 
 [debug]
 
