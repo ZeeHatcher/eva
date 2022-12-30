@@ -65,13 +65,22 @@ func _on_StartMenu_start_game():
 
 
 func _on_Spawner_spawned(npc: NPC) -> void:
-	npc.connect("died", self, "_update_points")
-	npc.connect("sacrificed", self, "_update_points")
+	npc.connect("died", self, "_on_NPC_died")
+	npc.connect("sacrificed", self, "_on_NPC_sacrificed")
 
 
 func _update_points(pts: int) -> void:
 	points += pts
 
+
+func _on_NPC_died(pts: int) -> void:
+	_camera.shake(5)
+	_update_points(pts)
+
+
+func _on_NPC_sacrificed(pts: int) -> void:
+	_update_points(pts)
+	
 
 func _on_GameOver_retry():
 	var game_scene = load("res://scenes/debug/debug.tscn")
@@ -79,9 +88,14 @@ func _on_GameOver_retry():
 
 
 func _on_Core_destroyed():
+	_camera.shake(20)
 	_game_over.update_score(points)
 	_game_over.show()
 
 
 func _on_Gun_shot(charge_level: float):
 	_camera.shake(charge_level * 5 + 1)
+
+
+func _on_Core_hurt():
+	_camera.shake(10)
