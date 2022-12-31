@@ -30,3 +30,5 @@ position = Vector2( -72, 0 )
 
 [node name="HitFlash" type="Node" parent="."]
 script = ExtResource( 4 )
+flash_color = Color( 1, 0.25098, 0.25098, 1 )
+duration = 0.2
