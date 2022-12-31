@@ -7,6 +7,7 @@ signal hurt
 
 const HitParticleScene := preload("res://particles/lightning.tscn")
 const HealParticleScene := preload("res://particles/heal_aura.tscn")
+const DestroyParticleScene := preload("res://particles/circle_burst.tscn")
 
 export var max_health := 3
 export var rotation_speed_degrees := 180
@@ -43,6 +44,7 @@ func hurt() -> void:
 	
 	if health == 0:
 		emit_signal("destroyed")
+		_emit_particle(DestroyParticleScene, _sprite.modulate)
 		queue_free()
 	else:
 		emit_signal("hurt")
@@ -65,8 +67,10 @@ func disable() -> void:
 	_gun.disable()
 
 
-func _emit_particle(scene: PackedScene) -> void:
+func _emit_particle(scene: PackedScene, color_override: Color = Color.black) -> void:
 	var particles := scene.instance() as Particles2D
 	context.add_child(particles)
 	particles.position = position
+	if color_override:
+		particles.process_material.color = color_override
 	particles.emitting = true
