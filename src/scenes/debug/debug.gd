@@ -77,7 +77,6 @@ func _update_points(pts: int) -> void:
 
 func _on_NPC_died(npc: NPC) -> void:
 	_update_points(npc.points_on_death)
-	_emit_npc_particles(npc)
 
 
 func _on_NPC_sacrificed(npc: NPC) -> void:
@@ -92,10 +91,3 @@ func _on_GameOver_retry():
 func _on_Core_destroyed():
 	_game_over.update_score(points)
 	_game_over.show()
-
-
-func _emit_npc_particles(npc: NPC) -> void:
-	var particles := npc.ParticlesScene.instance() as Particles2D
-	particles.position = npc.position
-	add_child(particles)
-	particles.emitting = true

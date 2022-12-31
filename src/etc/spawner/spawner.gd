@@ -34,6 +34,7 @@ func spawn_pack() -> void:
 func spawn(pos: Vector2) -> void:
 	var npc := _randomize_npc()
 	npc.global_position = pos
+	npc.context = context
 	context.add_child(npc)
 	emit_signal("spawned", npc)
 

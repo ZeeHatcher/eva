@@ -12,6 +12,9 @@ export var health := 100 setget set_health
 var target: Node2D
 var points_on_death: int
 var points_on_sacrifice: int
+var particles_scene: PackedScene
+
+onready var context: Node = get_parent()
 
 onready var _sprite := $Sprite
 onready var _hit_flash := $HitFlash
@@ -39,6 +42,7 @@ func hurt(damage: int) -> void:
 	self.health -= damage
 	
 	if health == 0:
+		_emit_particles()
 		emit_signal("died")
 		queue_free()
 	else:
@@ -61,6 +65,16 @@ func set_move_speed(val: int) -> void:
 
 func set_health(val: int) -> void:
 	health = max(val, 0)
+
+
+func _emit_particles() -> void:
+	if not particles_scene:
+		return
+	
+	var particles := particles_scene.instance() as Particles2D
+	particles.position = position
+	context.add_child(particles)
+	particles.emitting = true
 
 
 func _sacrifice_to(_core: Core) -> void:
