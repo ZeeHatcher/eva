@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 27.0185
 
-[node name="Foe" instance=ExtResource( 3 )]
+[node name="Foe" groups=["npcs"] instance=ExtResource( 3 )]
 script = ExtResource( 1 )
 move_speed = 50
 health = 60

@@ -89,5 +89,8 @@ func _on_GameOver_retry():
 
 
 func _on_Core_destroyed():
+	var npcs := get_tree().get_nodes_in_group("npcs")
+	for npc in npcs:
+		npc.kill()
 	_game_over.update_score(points)
 	_game_over.show()

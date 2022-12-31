@@ -59,6 +59,11 @@ func sacrifice_to(core: Core) -> void:
 	queue_free()
 
 
+func kill() -> void:
+	_emit_particles()
+	queue_free()
+
+
 func set_move_speed(val: int) -> void:
 	move_speed = max(val, 0)
 

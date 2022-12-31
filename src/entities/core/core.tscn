@@ -19,7 +19,7 @@ rotation_speed_degrees = 135
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.9125, 0.25, 1 )
+modulate = Color( 1, 0.913725, 0.25098, 1 )
 texture = ExtResource( 2 )
 
 [node name="Arm" type="Position2D" parent="."]
