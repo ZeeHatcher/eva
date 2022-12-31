@@ -6,6 +6,7 @@ signal destroyed
 signal hurt
 
 const HitParticleScene := preload("res://particles/lightning.tscn")
+const HealParticleScene := preload("res://particles/heal_aura.tscn")
 
 export var max_health := 3
 export var rotation_speed_degrees := 180
@@ -51,6 +52,7 @@ func hurt() -> void:
 
 func heal() -> void:
 	health = min(health + 1, max_health)
+	_emit_particle(HealParticleScene)
 
 
 func enable() -> void:

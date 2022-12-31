@@ -31,7 +31,7 @@ scale_random = 0.1
 color = Color( 1, 0.25098, 0.25098, 1 )
 color_ramp = SubResource( 3 )
 
-[node name="Particles2D" type="Particles2D"]
+[node name="TriangleBurst" type="Particles2D"]
 position = Vector2( 995, 519 )
 emitting = false
 amount = 10

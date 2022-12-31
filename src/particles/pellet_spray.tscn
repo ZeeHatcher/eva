@@ -22,7 +22,7 @@ damping_random = 0.19
 scale = 0.1
 color_ramp = SubResource( 3 )
 
-[node name="Particles2D" type="Particles2D"]
+[node name="PelletSpray" type="Particles2D"]
 position = Vector2( 928, 504 )
 emitting = false
 lifetime = 0.2
