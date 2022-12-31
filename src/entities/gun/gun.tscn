@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/gun/gun.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/gun.png" type="Texture" id=2]
+
+[sub_resource type="Curve" id=1]
+max_value = 2.0
+_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+max_value = 2.0
+_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Gun" type="Node2D"]
 position = Vector2( 457, 304 )
@@ -25,13 +33,16 @@ visible = false
 position = Vector2( -32, 0 )
 points = PoolVector2Array( 0, 0, -128, 0 )
 width = 2.0
+width_curve = SubResource( 1 )
+default_color = Color( 1, 1, 1, 1 )
 
 [node name="RightSpreadBoundary" type="Line2D" parent="."]
 visible = false
 position = Vector2( -32, 0 )
 points = PoolVector2Array( 0, 0, -128, 0 )
 width = 2.0
-default_color = Color( 0.4, 0.501961, 1, 1 )
+width_curve = SubResource( 2 )
+default_color = Color( 1, 1, 1, 1 )
 
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.3
