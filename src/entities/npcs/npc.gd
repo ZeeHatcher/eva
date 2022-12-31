@@ -2,9 +2,9 @@ extends Area2D
 class_name NPC
 
 
-signal died(points)
+signal died
 signal hurt
-signal sacrificed(points)
+signal sacrificed
 
 export var move_speed := 100 setget set_move_speed
 export var health := 100 setget set_health
@@ -39,7 +39,7 @@ func hurt(damage: int) -> void:
 	self.health -= damage
 	
 	if health == 0:
-		emit_signal("died", points_on_death)
+		emit_signal("died")
 		queue_free()
 	else:
 		emit_signal("hurt")
@@ -51,7 +51,7 @@ func sacrifice_to(core: Core) -> void:
 		return
 	
 	_sacrifice_to(core)
-	emit_signal("sacrificed", points_on_sacrifice)
+	emit_signal("sacrificed")
 	queue_free()
 
 

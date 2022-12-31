@@ -24,7 +24,7 @@ func _on_Gun_shot(charge_level: float):
 	_shake(charge_level * gun_shot_shake + min_gun_shot_shake)
 
 
-func _on_NPC_died(_pts: int) -> void:
+func _on_NPC_died() -> void:
 	_shake(npc_died_shake)
 
 
