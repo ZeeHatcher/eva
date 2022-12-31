@@ -96,6 +96,7 @@ func _shoot() -> void:
 				_barrel.global_position,
 				size_scale,
 				is_crit)
+		projectile.context = context
 	
 	emit_signal("shot", charge_level)
 	can_shoot = false

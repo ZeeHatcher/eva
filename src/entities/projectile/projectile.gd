@@ -2,12 +2,16 @@ extends Area2D
 class_name Projectile
 
 
+const ParticleScene := preload("res://particles/pellet_spray.tscn")
+
 export(int) var speed := 300
 export(int) var damage := 1
 
 var direction := Vector2.ONE
 var velocity := Vector2.ZERO
 var is_crit := false
+
+onready var context: Node = get_parent()
 
 
 func setup(
@@ -40,6 +44,7 @@ func hit(target: NPC) -> void:
 	target.hurt(damage)
 	
 	if not is_crit:
+		_emit_particles()
 		queue_free()
 
 
@@ -60,3 +65,11 @@ func despawn() -> void:
 
 func _on_VisibilityNotifier2D_screen_exited():
 	despawn()
+
+
+func _emit_particles() -> void:
+	var particles := ParticleScene.instance() as Particles2D
+	particles.position = position
+	particles.rotation = direction.angle()
+	context.add_child(particles)
+	particles.emitting = true
