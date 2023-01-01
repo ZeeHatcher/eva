@@ -24,10 +24,11 @@ var _x: float
 
 onready var context: Node = get_parent()
 
-onready var _barrel := $Barrel
+onready var _barrel := $Tip
 onready var _left_spread_boundary := $LeftSpreadBoundary
 onready var _right_spread_boundary := $RightSpreadBoundary
 onready var _cooldown := $CooldownTimer
+onready var _animation_player := $AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
@@ -99,6 +100,8 @@ func _shoot() -> void:
 		projectile.context = context
 	
 	emit_signal("shot", charge_level)
+	_animation_player.stop()
+	_animation_player.play("shoot")
 	can_shoot = false
 	_cooldown.start()
 

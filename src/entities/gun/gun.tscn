@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/gun/gun.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/gun.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/gun_barrel.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/gun_body.png" type="Texture" id=3]
 
 [sub_resource type="Curve" id=1]
 max_value = 2.0
@@ -10,6 +11,23 @@ _data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 [sub_resource type="Curve" id=2]
 max_value = 2.0
 _data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "shoot"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Barrel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.3 ),
+"transitions": PoolRealArray( 1, 0.784585, 1 ),
+"update": 0,
+"values": [ Vector2( -5, 0 ), Vector2( -5, 0 ), Vector2( -52, 0 ) ]
+}
 
 [node name="Gun" type="Node2D"]
 position = Vector2( 457, 304 )
@@ -21,16 +39,20 @@ _speed_coefficient = 1500
 _max_spread_angle_degrees = 45
 _size_coefficient = 2.5
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Barrel" type="Sprite" parent="."]
+position = Vector2( -52, 0 )
 texture = ExtResource( 2 )
 
-[node name="Barrel" type="Position2D" parent="."]
-position = Vector2( -52, 0 )
+[node name="Tip" type="Position2D" parent="."]
+position = Vector2( -80, 0 )
 
 [node name="LeftSpreadBoundary" type="Line2D" parent="."]
 visible = false
 position = Vector2( -32, 0 )
-points = PoolVector2Array( -22, 0, -128, 0 )
+points = PoolVector2Array( -50, 0, -128, 0 )
 width = 2.0
 width_curve = SubResource( 1 )
 default_color = Color( 1, 1, 1, 1 )
@@ -38,7 +60,7 @@ default_color = Color( 1, 1, 1, 1 )
 [node name="RightSpreadBoundary" type="Line2D" parent="."]
 visible = false
 position = Vector2( -32, 0 )
-points = PoolVector2Array( -22, 0, -128, 0 )
+points = PoolVector2Array( -50, 0, -128, 0 )
 width = 2.0
 width_curve = SubResource( 2 )
 default_color = Color( 1, 1, 1, 1 )
@@ -46,5 +68,8 @@ default_color = Color( 1, 1, 1, 1 )
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/shoot = SubResource( 3 )
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]
