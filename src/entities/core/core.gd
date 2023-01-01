@@ -26,6 +26,7 @@ onready var _hit_flash := $HitFlash
 func _ready() -> void:
 	_gun.setup(context)
 	_hit_flash.original_color = _sprite.modulate
+	_sprite.max_value = max_health - 1
 
 
 func _physics_process(delta: float) -> void:
@@ -49,12 +50,14 @@ func hurt() -> void:
 	else:
 		emit_signal("hurt")
 		_emit_particle(HitParticleScene)
+		_update_color()
 		_hit_flash.flash(_sprite)
 
 
 func heal() -> void:
 	health = min(health + 1, max_health)
 	_emit_particle(HealParticleScene)
+	_update_color()
 
 
 func enable() -> void:
@@ -72,3 +75,8 @@ func _emit_particle(scene: PackedScene) -> void:
 	context.add_child(particles)
 	particles.position = position
 	particles.emitting = true
+
+
+func _update_color() -> void:
+	_sprite.value = health - 1
+	_hit_flash.original_color = _sprite.modulate
