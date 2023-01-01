@@ -66,7 +66,7 @@ func _on_Projectile_area_entered(npc: NPC):
 
 
 func despawn() -> void:
-	trail.queue_free()
+	trail.has_source = false
 	if is_instance_valid(self) and not is_queued_for_deletion():
 		queue_free()
 
