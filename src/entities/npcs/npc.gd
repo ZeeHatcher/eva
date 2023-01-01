@@ -18,6 +18,7 @@ onready var context: Node = get_parent()
 
 onready var _sprite := $Sprite
 onready var _hit_flash := $HitFlash
+onready var _base_health := health
 
 
 func _ready() -> void:
@@ -48,6 +49,7 @@ func hurt(damage: int) -> void:
 	else:
 		emit_signal("hurt")
 		_hit_flash.flash(_sprite)
+		_update_sprite()
 
 
 func sacrifice_to(core: Core) -> void:
@@ -84,3 +86,9 @@ func _emit_particles() -> void:
 
 func _sacrifice_to(_core: Core) -> void:
 	pass
+
+
+func _update_sprite() -> void:
+	var damage_category := int(float(health) / _base_health * _sprite.hframes)
+	var frame: int = _sprite.hframes - damage_category - 1
+	_sprite.frame = frame

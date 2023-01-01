@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/npcs/friend/friend.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/filled_circle.png" type="Texture" id=2]
+[ext_resource path="res://assets/sheets/circle_crack.png" type="Texture" id=2]
 [ext_resource path="res://entities/npcs/npc.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -15,6 +15,7 @@ health = 80
 modulate = Color( 0.25098, 0.807843, 1, 1 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 2 )
+hframes = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )

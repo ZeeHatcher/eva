@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/npcs/foe/foe.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/filled_triangle.png" type="Texture" id=2]
+[ext_resource path="res://assets/sheets/triangle_crack.png" type="Texture" id=2]
 [ext_resource path="res://entities/npcs/npc.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 27.0185
 
 [node name="Foe" groups=["npcs"] instance=ExtResource( 3 )]
+position = Vector2( 992, 552 )
 script = ExtResource( 1 )
 move_speed = 50
 health = 60
@@ -15,6 +16,7 @@ health = 60
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 1, 0.25098, 0.25098, 1 )
 texture = ExtResource( 2 )
+hframes = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( -13, 0 )
