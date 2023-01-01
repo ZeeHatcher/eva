@@ -28,7 +28,7 @@ onready var _barrel := $Tip
 onready var _left_spread_boundary := $LeftSpreadBoundary
 onready var _right_spread_boundary := $RightSpreadBoundary
 onready var _cooldown := $CooldownTimer
-onready var _animation_player := $AnimationPlayer
+onready var _tween := $Tween
 
 
 func _physics_process(delta: float) -> void:
@@ -100,8 +100,7 @@ func _shoot() -> void:
 		projectile.context = context
 	
 	emit_signal("shot", charge_level)
-	_animation_player.stop()
-	_animation_player.play("shoot")
+	_animate_barrel()
 	can_shoot = false
 	_cooldown.start()
 
@@ -134,7 +133,14 @@ func _update_boundaries_position() -> void:
 	var _right_points: PoolVector2Array = _right_spread_boundary.points
 	_right_points[1] = Vector2.LEFT.rotated(rotation + spread) * _indicator_length
 	_right_spread_boundary.points = _right_points
-	
+
+
+func _animate_barrel() -> void:
+	var x := 48 - charge_level * 48
+	_tween.interpolate_property($Barrel, "position", Vector2(-x, 0), Vector2(-52, 0),
+			_cooldown.wait_time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	_tween.start()
+
 
 func _on_CooldownTimer_timeout():
 	can_shoot = true
