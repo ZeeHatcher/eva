@@ -3,16 +3,18 @@ class_name Projectile
 
 
 const ParticleScene := preload("res://particles/pellet_spray.tscn")
+const TrailScene := preload("res://etc/trail/trail.tscn")
 
 export(int) var speed := 300
 export(int) var damage := 1
+export(int) var trail_length := 50
 
 var direction := Vector2.ONE
 var velocity := Vector2.ZERO
 var is_crit := false
 
 onready var context: Node = get_parent()
-
+onready var trail: Line2D = TrailScene.instance()
 
 func setup(
 		_damage: int, _direction: Vector2, _speed: int,
@@ -31,6 +33,10 @@ func setup(
 	sprite.scale = sprite.scale * size_scale
 
 
+func _ready():
+	context.add_child(trail)
+
+
 func _physics_process(delta: float) -> void:
 	move(delta)
 
@@ -38,6 +44,7 @@ func _physics_process(delta: float) -> void:
 func move(delta: float) -> void:
 	velocity = speed * direction * delta
 	position += velocity
+	trail.add_trail(position)
 
 
 func hit(target: NPC) -> void:
@@ -59,6 +66,7 @@ func _on_Projectile_area_entered(npc: NPC):
 
 
 func despawn() -> void:
+	trail.queue_free()
 	if is_instance_valid(self) and not is_queued_for_deletion():
 		queue_free()
 
