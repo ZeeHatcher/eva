@@ -48,21 +48,26 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 margin_right = 271.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="MusicSlider" type="HSlider" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 margin_top = 52.0
 margin_right = 271.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 100.0
-rounded = true
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer2/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer2/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
