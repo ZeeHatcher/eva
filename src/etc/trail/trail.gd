@@ -9,7 +9,7 @@ func add_trail(pos) -> void:
 	add_point(pos)
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	# delete trail if used up
 	if not has_source and get_point_count() <= 0:
 		queue_free()
