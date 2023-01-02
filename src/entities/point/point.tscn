@@ -37,6 +37,8 @@ tracks/1/keys = {
 
 [node name="Point" type="Node2D"]
 script = ExtResource( 3 )
+epic_color = Color( 1, 0.913725, 0.25098, 1 )
+danger_color = Color( 1, 0.25098, 0.25098, 1 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5

@@ -1,6 +1,10 @@
 extends Node2D
 
 
+export(Color) var epic_color := Color.yellow
+export(Color) var danger_color := Color.red
+export(int) var max_value := 3
+
 var value setget set_value
 
 
@@ -16,6 +20,8 @@ func set_value(val: int) -> void:
 	elif val > 1:
 		prefix = "x"
 	
+	var color := Color.white.linear_interpolate(epic_color, float(val) / max_value) if val > 0 else danger_color
+	$Label.add_color_override("font_color", color)
 	$Label.text = prefix + str(val)
 
 
