@@ -3,7 +3,7 @@ extends Node2D
 class_name TechLabel
 
 
-var target: NPC setget set_target
+var target: NPC
 
 onready var label := $Label
 
@@ -22,17 +22,10 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not target or not is_instance_valid(target):
+	if not target:
 		return
 	
+	if not is_instance_valid(target) or target.is_queued_for_deletion():
+		queue_free()
+	
 	position = target.position
-
-
-func set_target(val: NPC) -> void:
-	target = val
-	target.connect("died", self, "_on_target_gone")
-	target.connect("sacrificed", self, "_on_target_gone")
-
-
-func _on_target_gone() -> void:
-	queue_free()
