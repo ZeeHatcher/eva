@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/gun/gun.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/gun_barrel.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/gun_body.png" type="Texture" id=3]
+[ext_resource path="res://assets/sfx/shoot.wav" type="AudioStream" id=4]
 
 [sub_resource type="Curve" id=1]
 max_value = 2.0
@@ -55,5 +56,8 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

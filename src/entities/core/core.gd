@@ -8,6 +8,9 @@ signal hurt
 const HitParticleScene := preload("res://particles/lightning.tscn")
 const HealParticleScene := preload("res://particles/heal_aura.tscn")
 const DestroyParticleScene := preload("res://particles/circle_burst_2.tscn")
+const HurtSoundScene := preload("res://assets/sfx/scenes/core_hurt_sound.tscn")
+const DieSoundScene := preload("res://assets/sfx/scenes/core_die_sound.tscn")
+const HealSoundScene := preload("res://assets/sfx/scenes/core_heal_sound.tscn")
 
 export var max_health := 3
 export var rotation_speed_degrees := 180
@@ -44,10 +47,12 @@ func hurt() -> void:
 	health = max(health - 1, 0)
 	
 	if health == 0:
+		context.add_child(DieSoundScene.instance())
 		emit_signal("destroyed")
 		_emit_particle(DestroyParticleScene)
 		queue_free()
 	else:
+		context.add_child(HurtSoundScene.instance())
 		emit_signal("hurt")
 		_emit_particle(HitParticleScene)
 		_update_color()
@@ -55,6 +60,7 @@ func hurt() -> void:
 
 
 func heal() -> void:
+	context.add_child(HealSoundScene.instance())
 	health = min(health + 1, max_health)
 	_emit_particle(HealParticleScene)
 	_update_color()

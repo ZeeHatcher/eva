@@ -6,6 +6,9 @@ signal died
 signal hurt
 signal sacrificed
 
+const DieSoundScene := preload("res://assets/sfx/scenes/npc_die_sound.tscn")
+const HurtSoundScene := preload("res://assets/sfx/scenes/npc_hurt_sound.tscn")
+
 export var move_speed := 100 setget set_move_speed
 export var health := 100 setget set_health
 
@@ -43,10 +46,12 @@ func hurt(damage: int) -> void:
 	self.health -= damage
 	
 	if health == 0:
+		context.add_child(DieSoundScene.instance())
 		_emit_particles()
 		emit_signal("died")
 		queue_free()
 	else:
+		context.add_child(HurtSoundScene.instance())
 		emit_signal("hurt")
 		_hit_flash.flash(_sprite)
 		_update_sprite()

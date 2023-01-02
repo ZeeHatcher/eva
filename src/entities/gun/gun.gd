@@ -101,6 +101,7 @@ func _shoot() -> void:
 	
 	emit_signal("shot", charge_level)
 	_animate_barrel()
+	$ShootSound.play()
 	can_shoot = false
 	_cooldown.start()
 
