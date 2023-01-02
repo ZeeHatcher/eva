@@ -114,11 +114,14 @@ func _update_points(pts: int) -> void:
 
 
 func _on_NPC_died_by(shoot_count: int, npc: NPC) -> void:
-	if !shot_kills.has(shoot_count):
-		shot_kills[shoot_count] = 0
-	shot_kills[shoot_count] += 1
+	var points = npc.points_on_death
 	
-	var points = npc.points_on_death * shot_kills[shoot_count]
+	if npc.get_class() == "Foe":
+		if !shot_kills.has(shoot_count):
+			shot_kills[shoot_count] = 0
+		shot_kills[shoot_count] += 1
+		points *= shot_kills[shoot_count]
+	
 	_update_points(points)
 	_pop_up_point(npc.position, points)
 
