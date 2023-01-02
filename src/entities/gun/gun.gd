@@ -3,6 +3,7 @@ extends Node2D
 
 signal shot(charge_level)
 signal reloaded
+signal cocked
 
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
 const CritProjectileScene := preload("res://entities/projectile/crit_projectile/crit_projectile.tscn")
@@ -57,6 +58,7 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("action"):
 		_reset_charge()
 		_update_boundaries_position()
+		emit_signal("cocked")
 		
 	if can_shoot and event.is_action_released("action"):
 		_show_spread_boundaries(false)

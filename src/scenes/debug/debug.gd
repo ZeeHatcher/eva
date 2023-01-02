@@ -137,6 +137,7 @@ func _on_Core_destroyed():
 
 func _on_BufferTimer_timeout() -> void:
 	_core.enable()
+	$"%Instructions".show()
 
 
 func _pop_up_point(pos: Vector2, value: int) -> void:
@@ -147,3 +148,14 @@ func _pop_up_point(pos: Vector2, value: int) -> void:
 	add_child(point)
 	point.position = pos
 	point.value = value
+
+
+func _on_Gun_cocked():
+	$"%Instructions".next()
+	_core._gun.disconnect("cocked", self, "_on_Gun_cocked")
+	_core._gun.connect("shot", self, "_on_Gun_shot")
+
+
+func _on_Gun_shot(_charge_level: float):
+	$"%Instructions".remove()
+	_core._gun.disconnect("shot", self, "_on_Gun_shot")

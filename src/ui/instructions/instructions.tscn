@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/font_body.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/instructions/instructions.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "next"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("First:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Second:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "remove"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Second:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("First:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Instructions" type="CenterContainer"]
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="First" type="VBoxContainer" parent="."]
+margin_right = 345.0
+margin_bottom = 119.0
+
+[node name="Label" type="Label" parent="First"]
+margin_right = 345.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press & hold"
+align = 1
+
+[node name="Label2" type="Label" parent="First"]
+margin_top = 41.0
+margin_right = 345.0
+margin_bottom = 78.0
+custom_colors/font_color = Color( 1, 0.913725, 0.25098, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "space"
+align = 1
+
+[node name="Label3" type="Label" parent="First"]
+margin_top = 82.0
+margin_right = 345.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 2 )
+text = "to charge"
+align = 1
+
+[node name="Second" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 23.0
+margin_top = 20.0
+margin_right = 322.0
+margin_bottom = 98.0
+
+[node name="Label" type="Label" parent="Second"]
+margin_right = 299.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 2 )
+text = "Release to"
+align = 1
+
+[node name="Label2" type="Label" parent="Second"]
+margin_top = 41.0
+margin_right = 299.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 2 )
+text = "shoot"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 5.0
+anims/next = SubResource( 1 )
+anims/remove = SubResource( 3 )
+anims/show = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
