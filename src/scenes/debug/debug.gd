@@ -3,6 +3,7 @@ extends Node2D
 
 const FoeScene := preload("res://entities/npcs/foe/foe.tscn")
 const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
+const PointScene := preload("res://entities/point/point.tscn")
 
 var points := 0
 
@@ -49,6 +50,9 @@ func _spawn_npc(scene: PackedScene) -> void:
 	npc.target = $Core
 	npc.position = get_viewport().get_mouse_position()
 	add_child(npc)
+	npc.connect("died", self, "_on_NPC_died", [npc])
+	npc.connect("died", _shaker, "_on_NPC_died")
+	npc.connect("sacrificed", self, "_on_NPC_sacrificed", [npc])
 
 
 func _on_Stopwatch_tick() -> void:
@@ -110,10 +114,12 @@ func _update_points(pts: int) -> void:
 
 func _on_NPC_died(npc: NPC) -> void:
 	_update_points(npc.points_on_death)
+	_pop_up_point(npc.position, npc.points_on_death)
 
 
 func _on_NPC_sacrificed(npc: NPC) -> void:
 	_update_points(npc.points_on_sacrifice)
+	_pop_up_point(_core.position, npc.points_on_sacrifice)
 	
 
 func _on_GameOver_retry():
@@ -131,3 +137,13 @@ func _on_Core_destroyed():
 
 func _on_BufferTimer_timeout() -> void:
 	_core.enable()
+
+
+func _pop_up_point(pos: Vector2, value: int) -> void:
+	if value == 0:
+		return
+	
+	var point := PointScene.instance()
+	add_child(point)
+	point.position = pos
+	point.value = value

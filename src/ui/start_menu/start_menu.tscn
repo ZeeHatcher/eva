@@ -92,6 +92,7 @@ anims/RESET = SubResource( 1 )
 anims/float = SubResource( 2 )
 
 [node name="Instruction2" type="Label" parent="."]
+visible = false
 margin_top = 306.0
 margin_right = 666.0
 margin_bottom = 343.0
