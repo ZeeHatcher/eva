@@ -26,6 +26,7 @@ var can_shoot := true
 
 var _enabled := true
 var _x: float
+var shoot_count := 0
 
 onready var context: Node = get_parent()
 
@@ -106,7 +107,8 @@ func _shoot() -> void:
 				speed,
 				_barrel.global_position,
 				size_scale,
-				is_crit)
+				is_crit,
+				shoot_count)
 		projectile.context = context
 	
 	emit_signal("shot", charge_level)
@@ -116,6 +118,7 @@ func _shoot() -> void:
 	if is_crit:
 		$CritSound.play()
 	
+	shoot_count += 1
 	can_shoot = false
 	_cooldown.start()
 

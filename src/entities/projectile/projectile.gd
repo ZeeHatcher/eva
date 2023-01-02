@@ -12,19 +12,22 @@ export(int) var trail_length := 50
 var direction := Vector2.ONE
 var velocity := Vector2.ZERO
 var is_crit := false
+var shoot_count: int
 
 onready var context: Node = get_parent()
 onready var trail: Line2D = TrailScene.instance()
 
 func setup(
 		_damage: int, _direction: Vector2, _speed: int,
-		_position: Vector2, size_scale: float, _is_crit: bool = false
+		_position: Vector2, size_scale: float, 
+		_is_crit: bool = false, _shoot_count: int = 0
 ) -> void:
 	damage = _damage
 	speed = _speed
 	direction = _direction
 	position = _position
 	is_crit = _is_crit
+	shoot_count = _shoot_count
 	
 	var hitbox := $Hitbox
 	var sprite := $Sprite
@@ -49,7 +52,7 @@ func move(delta: float) -> void:
 
 
 func hit(target: NPC) -> void:
-	target.hurt(damage)
+	target.hurt(damage, shoot_count)
 	
 	if not is_crit:
 		_emit_particles()

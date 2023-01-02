@@ -6,6 +6,7 @@ const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 const PointScene := preload("res://entities/point/point.tscn")
 
 var points := 0
+var shot_kills := {}
 
 var _spawned = {
 	"Friend": false,
@@ -50,7 +51,7 @@ func _spawn_npc(scene: PackedScene) -> void:
 	npc.target = $Core
 	npc.position = get_viewport().get_mouse_position()
 	add_child(npc)
-	npc.connect("died", self, "_on_NPC_died", [npc])
+	npc.connect("died_by", self, "_on_NPC_died_by", [npc])
 	npc.connect("died", _shaker, "_on_NPC_died")
 	npc.connect("sacrificed", self, "_on_NPC_sacrificed", [npc])
 
@@ -91,7 +92,7 @@ func _on_StartMenu_load_tutorial():
 
 
 func _on_Spawner_spawned(npc: NPC) -> void:
-	npc.connect("died", self, "_on_NPC_died", [npc])
+	npc.connect("died_by", self, "_on_NPC_died_by", [npc])
 	npc.connect("died", _shaker, "_on_NPC_died")
 	npc.connect("sacrificed", self, "_on_NPC_sacrificed", [npc])
 	
@@ -112,9 +113,14 @@ func _update_points(pts: int) -> void:
 	points += pts
 
 
-func _on_NPC_died(npc: NPC) -> void:
-	_update_points(npc.points_on_death)
-	_pop_up_point(npc.position, npc.points_on_death)
+func _on_NPC_died_by(shoot_count: int, npc: NPC) -> void:
+	if !shot_kills.has(shoot_count):
+		shot_kills[shoot_count] = 0
+	shot_kills[shoot_count] += 1
+	
+	var points = npc.points_on_death * shot_kills[shoot_count]
+	_update_points(points)
+	_pop_up_point(npc.position, points)
 
 
 func _on_NPC_sacrificed(npc: NPC) -> void:

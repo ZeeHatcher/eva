@@ -3,6 +3,7 @@ class_name NPC
 
 
 signal died
+signal died_by(shot_count)
 signal hurt
 signal sacrificed
 
@@ -42,12 +43,13 @@ func _physics_process(delta) -> void:
 		look_at(target.position)
 
 
-func hurt(damage: int) -> void:
+func hurt(damage: int, shoot_count = 0) -> void:
 	self.health -= damage
 	
 	if health == 0:
 		context.add_child(DieSoundScene.instance())
 		_emit_particles()
+		emit_signal("died_by", shoot_count)
 		emit_signal("died")
 		queue_free()
 	else:
