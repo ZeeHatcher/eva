@@ -64,6 +64,21 @@ func _start_game() -> void:
 func _on_StartMenu_start_game():
 	_start_game()
 
+func _on_StartMenu_load_tutorial():
+	#To do for myself gotta go out soon
+	#Create a whole separate state (tutorial)
+	#keep the thing spinning and use signals to keep track of state
+	#add text instructions (maybe do the dudududu thing from FF)
+	#Let players freely control the thing with spacebar
+	#Spawn one enemy, slow down time (Engine.time_scale) and zoom in on enemy
+	#Ask player to shoot enemy
+	#Spawn friend
+	#Slow down time and zoom, let player absorb friend
+	#Keep track of player by assigning tutorial values (in case player just shoots friend) if >=1
+	#friend absorbed, send signal to move on
+	#After ready, run start game function
+	pass
+
 
 func _on_Spawner_spawned(npc: NPC) -> void:
 	npc.connect("died", self, "_on_NPC_died", [npc])
