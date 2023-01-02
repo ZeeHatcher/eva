@@ -17,6 +17,6 @@ func _input(event: InputEvent) -> void:
 		hide()
 		emit_signal("start_game")
 	
-	if event.is_action_pressed("helpme"):
-		hide()
-		emit_signal("load_tutorial")
+#	if event.is_action_pressed("helpme"):
+#		hide()
+#		emit_signal("load_tutorial")
