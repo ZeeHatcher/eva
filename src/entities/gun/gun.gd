@@ -5,6 +5,7 @@ signal shot(charge_level)
 signal reloaded
 
 const ProjectileScene := preload("res://entities/projectile/projectile.tscn")
+const CritProjectileScene := preload("res://entities/projectile/crit_projectile/crit_projectile.tscn")
 
 export var _charge_speed := 1.0
 export var _max_projectiles := 10
@@ -94,7 +95,7 @@ func _shoot() -> void:
 	var is_crit := projectile_count == 1
 	
 	for n in range(projectile_count):
-		var projectile := ProjectileScene.instance()
+		var projectile := CritProjectileScene.instance() if is_crit else ProjectileScene.instance()
 		projectile.trail_length = trail_length
 		context.add_child(projectile)
 		projectile.setup(
