@@ -3,7 +3,7 @@ extends Control
 
 func _ready() -> void:
 	$"%SFXSlider".value = db2linear(AudioServer.get_bus_volume_db(1))
-	$"%MusicSlider".value = db2linear(AudioServer.get_bus_volume_db(1))
+	$"%MusicSlider".value = db2linear(AudioServer.get_bus_volume_db(2))
 
 
 func _on_SFXSlider_value_changed(value):
