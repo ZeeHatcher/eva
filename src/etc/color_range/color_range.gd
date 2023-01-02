@@ -17,5 +17,4 @@ func set_max_value(val: float) -> void:
 
 func set_value(val: float) -> void:
 	var weight := range_lerp(val, 0, max_value, 0, 1)
-	print(weight)
 	modulate = end_color.linear_interpolate(base_color, weight)
