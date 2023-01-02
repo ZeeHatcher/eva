@@ -85,9 +85,9 @@ anchor_bottom = 1.0
 
 [node name="StartMenu" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 5 )]
 margin_left = 627.0
-margin_top = 368.0
+margin_top = 389.0
 margin_right = 1293.0
-margin_bottom = 711.0
+margin_bottom = 691.0
 
 [node name="GameOver" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 6 )]
 unique_name_in_owner = true

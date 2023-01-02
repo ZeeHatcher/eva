@@ -10,7 +10,7 @@ onready var label := $Label
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, 5, Color.white)
-
+	
 
 func _ready() -> void:
 	var line := $Line2D
@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not target:
+	if not target or not is_instance_valid(target):
 		return
 	
 	position = target.position
