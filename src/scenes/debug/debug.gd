@@ -128,7 +128,7 @@ func _on_NPC_died_by(shoot_count: int, npc: NPC) -> void:
 
 func _on_NPC_sacrificed(npc: NPC) -> void:
 	_update_points(npc.points_on_sacrifice)
-	_pop_up_point(_core.position, npc.points_on_sacrifice)
+	_pop_up_point(_core.position, npc.points_on_sacrifice, false)
 	
 
 func _on_GameOver_retry():
@@ -149,14 +149,14 @@ func _on_BufferTimer_timeout() -> void:
 	$"%Instructions".show()
 
 
-func _pop_up_point(pos: Vector2, value: int) -> void:
+func _pop_up_point(pos: Vector2, value: int, mult := true) -> void:
 	if value == 0:
 		return
 	
 	var point := PointScene.instance()
 	add_child(point)
 	point.position = pos
-	point.value = value
+	point.set_value(value, mult)
 
 
 func _on_Gun_cocked():
