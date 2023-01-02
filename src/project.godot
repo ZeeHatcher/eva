@@ -77,6 +77,10 @@ _global_script_class_icons={
 config/name="Eva"
 run/main_scene="res://scenes/debug/debug.tscn"
 
+[audio]
+
+default_bus_layout="res://assets/sfx/default_bus_layout.tres"
+
 [debug]
 
 gdscript/warnings/narrowing_conversion=false

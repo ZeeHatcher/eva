@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/core_hurt.wav-b696f7e64ab91e10baf4ce94c9b09ef9.sample"
+path="res://.import/core_die.wav-c65579832d91942fd78244b3290ca103.sample"
 
 [deps]
 
-source_file="res://assets/sfx/core_hurt.wav"
-dest_files=[ "res://.import/core_hurt.wav-b696f7e64ab91e10baf4ce94c9b09ef9.sample" ]
+source_file="res://assets/sfx/source/core_die.wav"
+dest_files=[ "res://.import/core_die.wav-c65579832d91942fd78244b3290ca103.sample" ]
 
 [params]
 

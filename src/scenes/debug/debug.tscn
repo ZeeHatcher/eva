@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/core/core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/debug/debug.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui/game_over/game_over.tscn" type="PackedScene" id=6]
 [ext_resource path="res://etc/camera/camera.gd" type="Script" id=7]
 [ext_resource path="res://etc/shaker/shaker.gd" type="Script" id=8]
+[ext_resource path="res://ui/settings/settings.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -76,6 +77,8 @@ margin_left = -10.0
 margin_top = 237.0
 margin_right = 1930.0
 margin_bottom = 843.0
+
+[node name="Settings" parent="CanvasLayer/ViewportContainer" instance=ExtResource( 10 )]
 
 [connection signal="destroyed" from="Core" to="." method="_on_Core_destroyed"]
 [connection signal="destroyed" from="Core" to="Shaker" method="_on_Core_destroyed"]

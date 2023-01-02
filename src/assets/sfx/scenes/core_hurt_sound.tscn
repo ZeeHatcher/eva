@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/sfx/core_hurt.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/sfx/source/core_hurt.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/sfx/scenes/sfx.gd" type="Script" id=2]
 
 [node name="CoreHurtSound" type="AudioStreamPlayer"]
 stream = ExtResource( 1 )
 autoplay = true
+bus = "SFX"
 script = ExtResource( 2 )

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/shoot_crit.wav-b4c566909de30532a8b026ee4557c67e.sample"
+path="res://.import/shoot.wav-7b5933363f00c045d2d7f86f7c2b451d.sample"
 
 [deps]
 
-source_file="res://assets/sfx/shoot_crit.wav"
-dest_files=[ "res://.import/shoot_crit.wav-b4c566909de30532a8b026ee4557c67e.sample" ]
+source_file="res://assets/sfx/source/shoot.wav"
+dest_files=[ "res://.import/shoot.wav-7b5933363f00c045d2d7f86f7c2b451d.sample" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/core_heal.wav-f04825f71e9513203796fdb3c72fb284.sample"
+path="res://.import/shoot_crit.wav-4a573d26ccffb91abbd1ea5a47c5524f.sample"
 
 [deps]
 
-source_file="res://assets/sfx/core_heal.wav"
-dest_files=[ "res://.import/core_heal.wav-f04825f71e9513203796fdb3c72fb284.sample" ]
+source_file="res://assets/sfx/source/shoot_crit.wav"
+dest_files=[ "res://.import/shoot_crit.wav-4a573d26ccffb91abbd1ea5a47c5524f.sample" ]
 
 [params]
 

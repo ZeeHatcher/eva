@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/npc_hurt.wav-d6aa047e2af6cee563011410351a3769.sample"
+path="res://.import/core_heal.wav-2dc10ee0eaf0a849d62c9fc2bea35769.sample"
 
 [deps]
 
-source_file="res://assets/sfx/npc_hurt.wav"
-dest_files=[ "res://.import/npc_hurt.wav-d6aa047e2af6cee563011410351a3769.sample" ]
+source_file="res://assets/sfx/source/core_heal.wav"
+dest_files=[ "res://.import/core_heal.wav-2dc10ee0eaf0a849d62c9fc2bea35769.sample" ]
 
 [params]
 

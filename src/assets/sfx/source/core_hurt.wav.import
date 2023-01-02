@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/npc_die.wav-20f814f384dba08d65e141cf2417220e.sample"
+path="res://.import/core_hurt.wav-e8af413744659b6f3adf33ba8f0b4f83.sample"
 
 [deps]
 
-source_file="res://assets/sfx/npc_die.wav"
-dest_files=[ "res://.import/npc_die.wav-20f814f384dba08d65e141cf2417220e.sample" ]
+source_file="res://assets/sfx/source/core_hurt.wav"
+dest_files=[ "res://.import/core_hurt.wav-e8af413744659b6f3adf33ba8f0b4f83.sample" ]
 
 [params]
 
