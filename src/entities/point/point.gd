@@ -9,7 +9,13 @@ func _ready() -> void:
 
 
 func set_value(val: int) -> void:
-	var prefix := "+" if val >= 0 else ""
+	var prefix := ""
+	
+	if val == 1:
+		prefix = "+"
+	elif val > 1:
+		prefix = "x"
+	
 	$Label.text = prefix + str(val)
 
 
