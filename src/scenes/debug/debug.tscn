@@ -65,9 +65,9 @@ anchor_bottom = 1.0
 
 [node name="StartMenu" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 5 )]
 margin_left = 627.0
-margin_top = 389.0
+margin_top = 368.0
 margin_right = 1293.0
-margin_bottom = 691.0
+margin_bottom = 711.0
 
 [node name="GameOver" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 6 )]
 unique_name_in_owner = true
@@ -83,6 +83,7 @@ margin_bottom = 843.0
 [connection signal="shot" from="Core/Arm/Gun" to="Shaker" method="_on_Gun_shot"]
 [connection signal="spawned" from="Spawner" to="." method="_on_Spawner_spawned"]
 [connection signal="tick" from="Stopwatch" to="." method="_on_Stopwatch_tick"]
+[connection signal="load_tutorial" from="CanvasLayer/ViewportContainer/CenterContainer/StartMenu" to="." method="_on_StartMenu_load_tutorial"]
 [connection signal="start_game" from="CanvasLayer/ViewportContainer/CenterContainer/StartMenu" to="." method="_on_StartMenu_start_game"]
 [connection signal="retry" from="CanvasLayer/ViewportContainer/CenterContainer/GameOver" to="." method="_on_GameOver_retry"]
 
