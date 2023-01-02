@@ -1,9 +1,9 @@
-extends VBoxContainer
+extends Control
 
 
 signal retry
 
-onready var _score_label = $Score
+onready var _score_label = $"%Score"
 
 
 func _input(event: InputEvent) -> void:

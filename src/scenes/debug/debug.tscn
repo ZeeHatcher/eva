@@ -93,9 +93,9 @@ margin_bottom = 691.0
 unique_name_in_owner = true
 visible = false
 margin_left = 412.0
-margin_top = 348.0
+margin_top = 307.0
 margin_right = 1508.0
-margin_bottom = 731.0
+margin_bottom = 772.0
 
 [node name="Settings" parent="CanvasLayer/ViewportContainer" instance=ExtResource( 10 )]
 
