@@ -6,6 +6,11 @@ const FriendScene := preload("res://entities/npcs/friend/friend.tscn")
 
 var points := 0
 
+var _spawned = {
+	"Friend": false,
+	"Foe": false,
+}
+
 onready var _spawner := $Spawner
 onready var _stopwatch := $Stopwatch
 onready var _core := $Core
@@ -57,7 +62,7 @@ func _start_game() -> void:
 	_stopwatch.start()
 	get_tree().create_timer(0.3).connect("timeout", self, "_on_BufferTimer_timeout")
 	
-	_spawner.spawn_interval = 3 # exp(1.1)
+	_spawner.spawn_interval = 3
 	_spawner.max_pack_size = 1
 
 
@@ -85,6 +90,18 @@ func _on_Spawner_spawned(npc: NPC) -> void:
 	npc.connect("died", self, "_on_NPC_died", [npc])
 	npc.connect("died", _shaker, "_on_NPC_died")
 	npc.connect("sacrificed", self, "_on_NPC_sacrificed", [npc])
+	
+	match npc.get_class():
+		"Friend":
+			if not _spawned["Friend"]:
+				$FriendLabel.target = npc
+				$FriendLabel.visible = true
+				_spawned["Friend"] = true
+		"Foe":
+			if not _spawned["Foe"]:
+				$FoeLabel.target = npc
+				$FoeLabel.visible = true
+				_spawned["Foe"] = true
 
 
 func _update_points(pts: int) -> void:

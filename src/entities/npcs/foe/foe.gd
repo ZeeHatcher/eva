@@ -10,5 +10,9 @@ func _init() -> void:
 	particles_scene = TriangleBurstScene
 
 
+func get_class() -> String:
+	return "Foe"
+
+
 func _sacrifice_to(core: Core) -> void:
 	core.hurt()

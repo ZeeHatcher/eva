@@ -11,5 +11,9 @@ func _init() -> void:
 	particles_scene = CircleBurstScene
 
 
+func get_class() -> String:
+	return "Friend"
+
+
 func _sacrifice_to(core: Core) -> void:
 	core.heal()
