@@ -34,6 +34,7 @@ func setup(
 
 
 func _ready():
+	trail.trail_length = trail_length
 	context.add_child(trail)
 
 

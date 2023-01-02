@@ -15,6 +15,9 @@ export var _speed_coefficient := 1000
 export var _max_spread_angle_degrees := 60
 export var _size_coefficient := 3.0
 export var _indicator_length := 128
+export(Color) var _indicator_base_color := Color.white
+export(Color) var _indicator_crit_color := Color.white
+export var _max_trail_length := 20
 
 var charge_level: float
 var can_shoot := true
@@ -39,6 +42,11 @@ func _physics_process(delta: float) -> void:
 		_show_spread_boundaries(true)
 		_charge(delta * _charge_speed)
 		_update_boundaries_position()
+	
+	var is_crit := _calculate_projectile_count() == 1
+	var color := _indicator_crit_color if is_crit else _indicator_base_color
+	_left_spread_boundary.default_color = color
+	_right_spread_boundary.default_color = color
 
 
 func _unhandled_input(event: InputEvent):
@@ -77,18 +85,17 @@ func _reset_charge() -> void:
 
 
 func _shoot() -> void:
-	var projectile_count := int(charge_level * -_max_projectiles) + _max_projectiles
-	if projectile_count % 2 == 0:
-		projectile_count += 1
-	
+	var projectile_count := _calculate_projectile_count()
 	var damage := charge_level * _damage_coefficient + _min_damage
 	var speed := charge_level * _speed_coefficient + _min_speed
 	var size_scale := charge_level * _size_coefficient + 1
+	var trail_length := charge_level * _max_trail_length + 2
 	var spread := _calculate_spread()
 	var is_crit := projectile_count == 1
 	
 	for n in range(projectile_count):
 		var projectile := ProjectileScene.instance()
+		projectile.trail_length = trail_length
 		context.add_child(projectile)
 		projectile.setup(
 				damage,
@@ -117,6 +124,13 @@ func _calculate_direction(count: int, index: int, spread: float) -> Vector2:
 
 func _calculate_spread() -> float:
 	return range_lerp(charge_level, 1.0, 0.0, 0, deg2rad(_max_spread_angle_degrees))
+
+
+func _calculate_projectile_count() -> int:
+	var count := int(charge_level * -_max_projectiles) + _max_projectiles
+	if count % 2 == 0:
+		count += 1
+	return count
 
 
 func _show_spread_boundaries(show: bool) -> void:
