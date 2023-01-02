@@ -55,7 +55,7 @@ func _on_Stopwatch_tick() -> void:
 func _start_game() -> void:
 	_spawner.start()
 	_stopwatch.start()
-	_core.enable()
+	get_tree().create_timer(0.3).connect("timeout", self, "_on_BufferTimer_timeout")
 	
 	_spawner.spawn_interval = 3 # exp(1.1)
 	_spawner.max_pack_size = 1
@@ -63,6 +63,7 @@ func _start_game() -> void:
 
 func _on_StartMenu_start_game():
 	_start_game()
+
 
 func _on_StartMenu_load_tutorial():
 	#To do for myself gotta go out soon
@@ -109,3 +110,7 @@ func _on_Core_destroyed():
 		npc.kill()
 	_game_over.update_score(points)
 	_game_over.show()
+
+
+func _on_BufferTimer_timeout() -> void:
+	_core.enable()
