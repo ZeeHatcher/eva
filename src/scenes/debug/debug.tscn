@@ -92,10 +92,10 @@ margin_bottom = 711.0
 [node name="GameOver" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 6 )]
 unique_name_in_owner = true
 visible = false
-margin_left = -10.0
-margin_top = 237.0
-margin_right = 1930.0
-margin_bottom = 843.0
+margin_left = 412.0
+margin_top = 383.0
+margin_right = 1508.0
+margin_bottom = 696.0
 
 [node name="Settings" parent="CanvasLayer/ViewportContainer" instance=ExtResource( 10 )]
 
