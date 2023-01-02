@@ -15,6 +15,7 @@ export var _speed_coefficient := 1000
 export var _max_spread_angle_degrees := 60
 export var _size_coefficient := 3.0
 export var _indicator_length := 128
+export var _max_trail_length := 20
 
 var charge_level: float
 var can_shoot := true
@@ -84,11 +85,13 @@ func _shoot() -> void:
 	var damage := charge_level * _damage_coefficient + _min_damage
 	var speed := charge_level * _speed_coefficient + _min_speed
 	var size_scale := charge_level * _size_coefficient + 1
+	var trail_length := charge_level * _max_trail_length + 2
 	var spread := _calculate_spread()
 	var is_crit := projectile_count == 1
 	
 	for n in range(projectile_count):
 		var projectile := ProjectileScene.instance()
+		projectile.trail_length = trail_length
 		context.add_child(projectile)
 		projectile.setup(
 				damage,
