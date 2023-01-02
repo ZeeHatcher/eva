@@ -6,8 +6,8 @@ const CircleBurstScene := preload("res://particles/circle_burst.tscn")
 
 
 func _init() -> void:
-	points_on_death = -1
-	points_on_sacrifice = 1
+	points_on_death = -3
+	points_on_sacrifice = 3
 	particles_scene = CircleBurstScene
 
 
