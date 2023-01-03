@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 
 func show() -> void:
 	visible = true
-	get_tree().create_timer(1).connect("timeout", self, "_on_Timer_timeout")
+	get_tree().create_timer(0.3).connect("timeout", self, "_on_Timer_timeout")
 
 
 func hide() -> void:

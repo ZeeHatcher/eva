@@ -76,21 +76,17 @@ text = "Friend"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/ViewportContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="StartMenu" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 5 )]
+[node name="StartMenu" parent="CanvasLayer/CenterContainer" instance=ExtResource( 5 )]
 margin_left = 627.0
 margin_top = 389.0
 margin_right = 1293.0
 margin_bottom = 691.0
 
-[node name="GameOver" parent="CanvasLayer/ViewportContainer/CenterContainer" instance=ExtResource( 6 )]
+[node name="GameOver" parent="CanvasLayer/CenterContainer" instance=ExtResource( 6 )]
 unique_name_in_owner = true
 visible = false
 margin_left = 412.0
@@ -98,15 +94,23 @@ margin_top = 307.0
 margin_right = 1508.0
 margin_bottom = 772.0
 
-[node name="Settings" parent="CanvasLayer/ViewportContainer" instance=ExtResource( 10 )]
+[node name="Settings" parent="CanvasLayer" instance=ExtResource( 10 )]
+anchor_left = 0.01
+anchor_top = 0.01
+margin_right = -1668.0
+margin_bottom = -980.0
 
-[node name="Instructions" parent="CanvasLayer/ViewportContainer" instance=ExtResource( 11 )]
+[node name="Instructions" parent="CanvasLayer" instance=ExtResource( 11 )]
 unique_name_in_owner = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.3
 anchor_right = 0.5
 anchor_bottom = 0.3
+margin_left = -172.5
+margin_top = -59.5
+margin_right = 172.5
+margin_bottom = 59.5
 
 [connection signal="destroyed" from="Core" to="." method="_on_Core_destroyed"]
 [connection signal="destroyed" from="Core" to="Shaker" method="_on_Core_destroyed"]
@@ -115,9 +119,9 @@ anchor_bottom = 0.3
 [connection signal="shot" from="Core/Arm/Gun" to="Shaker" method="_on_Gun_shot"]
 [connection signal="spawned" from="Spawner" to="." method="_on_Spawner_spawned"]
 [connection signal="tick" from="Stopwatch" to="." method="_on_Stopwatch_tick"]
-[connection signal="load_tutorial" from="CanvasLayer/ViewportContainer/CenterContainer/StartMenu" to="." method="_on_StartMenu_load_tutorial"]
-[connection signal="start_game" from="CanvasLayer/ViewportContainer/CenterContainer/StartMenu" to="." method="_on_StartMenu_start_game"]
-[connection signal="retry" from="CanvasLayer/ViewportContainer/CenterContainer/GameOver" to="." method="_on_GameOver_retry"]
+[connection signal="load_tutorial" from="CanvasLayer/CenterContainer/StartMenu" to="." method="_on_StartMenu_load_tutorial"]
+[connection signal="start_game" from="CanvasLayer/CenterContainer/StartMenu" to="." method="_on_StartMenu_start_game"]
+[connection signal="retry" from="CanvasLayer/CenterContainer/GameOver" to="." method="_on_GameOver_retry"]
 
 [editable path="Core"]
 [editable path="FoeLabel"]

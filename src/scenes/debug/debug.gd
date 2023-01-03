@@ -140,6 +140,9 @@ func _on_Core_destroyed():
 	var npcs := get_tree().get_nodes_in_group("npcs")
 	for npc in npcs:
 		npc.kill()
+	if has_node("%Instructions"):
+		$"%Instructions".queue_free()
+	
 	_game_over.update_score(points)
 	_game_over.show()
 
