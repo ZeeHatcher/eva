@@ -18,6 +18,7 @@ onready var _stopwatch := $Stopwatch
 onready var _core := $Core
 onready	var _game_over := $"%GameOver"
 onready var _shaker := $Shaker
+onready var _bgm := $BGM
 
 
 func _ready() -> void:
@@ -69,6 +70,8 @@ func _start_game() -> void:
 	
 	_spawner.spawn_interval = 3
 	_spawner.max_pack_size = 1
+	
+	_bgm.play()
 
 
 func _on_StartMenu_start_game():
@@ -145,6 +148,8 @@ func _on_Core_destroyed():
 	
 	_game_over.update_score(points)
 	_game_over.show()
+	
+	_bgm.stop()
 
 
 func _on_BufferTimer_timeout() -> void:
