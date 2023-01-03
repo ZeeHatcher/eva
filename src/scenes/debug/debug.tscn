@@ -31,7 +31,7 @@ glow_hdr_threshold = 0.62
 script = ExtResource( 2 )
 
 [node name="Background" type="Polygon2D" parent="."]
-color = Color( 0.00392157, 0.0117647, 0.0392157, 1 )
+color = Color( 0.0196078, 0.0470588, 0.14902, 1 )
 polygon = PoolVector2Array( -256, -256, -256, 1336, 2176, 1336, 2176, -256 )
 
 [node name="Core" parent="." instance=ExtResource( 1 )]
