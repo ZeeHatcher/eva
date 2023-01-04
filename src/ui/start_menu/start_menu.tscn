@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( -2, -2, 1 ),
 "update": 0,
-"values": [ 265.0, 255, 265.0 ]
+"values": [ 265.0, 245, 265.0 ]
 }
 
 [node name="StartMenu" type="VBoxContainer"]
@@ -43,15 +43,15 @@ align = 1
 valign = 1
 
 [node name="Instructions" type="CenterContainer" parent="."]
-margin_top = 255.162
+margin_top = 249.968
 margin_right = 666.0
 margin_bottom = 302.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Instructions"]
 margin_left = 39.0
-margin_top = 4.0
+margin_top = 7.0
 margin_right = 626.0
-margin_bottom = 41.0
+margin_bottom = 44.0
 
 [node name="Label" type="Label" parent="Instructions/HBoxContainer"]
 margin_right = 172.0

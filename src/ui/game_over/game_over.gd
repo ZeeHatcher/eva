@@ -15,11 +15,13 @@ func _input(event: InputEvent) -> void:
 func show() -> void:
 	visible = true
 	get_tree().create_timer(0.3).connect("timeout", self, "_on_Timer_timeout")
+	$AnimationPlayer.play("float")
 
 
 func hide() -> void:
 	visible = false
 	set_process_input(false)
+	$AnimationPlayer.stop()
 
 
 func update_score(score) -> void:
