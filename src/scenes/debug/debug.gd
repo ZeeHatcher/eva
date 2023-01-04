@@ -71,7 +71,7 @@ func _start_game() -> void:
 	_spawner.spawn_interval = 3
 	_spawner.max_pack_size = 1
 	
-	_bgm.play()
+	_bgm.set_loop("Main")
 
 
 func _on_StartMenu_start_game():
@@ -149,7 +149,7 @@ func _on_Core_destroyed():
 	_game_over.update_score(points)
 	_game_over.show()
 	
-	_bgm.stop()
+	_bgm.set_loop("End")
 
 
 func _on_BufferTimer_timeout() -> void:
