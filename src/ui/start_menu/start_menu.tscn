@@ -7,58 +7,22 @@
 
 [sub_resource type="Animation" id=1]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:margin_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 265.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Instruction2:margin_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 306.0 ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "float"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:margin_top")
+tracks/0/path = NodePath("../..:margin_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 265.0, 267.0, 269.0, 271.0, 273.0, 275.0, 273.0, 272.0, 271.0, 269.0, 267.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../Instruction2:margin_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 306.0, 308.0, 310.0, 312.0, 314.0, 316.0, 314.0, 312.0, 310.0, 308.0, 306.0 ]
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
+"update": 0,
+"values": [ 265.0, 245, 265.0 ]
 }
 
 [node name="StartMenu" type="VBoxContainer"]
@@ -78,24 +42,40 @@ text = "EVA"
 align = 1
 valign = 1
 
-[node name="Instruction" type="Label" parent="."]
-margin_top = 265.0
+[node name="Instructions" type="CenterContainer" parent="."]
+margin_top = 249.968
 margin_right = 666.0
 margin_bottom = 302.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Instructions"]
+margin_left = 39.0
+margin_top = 7.0
+margin_right = 626.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="Instructions/HBoxContainer"]
+margin_right = 172.0
+margin_bottom = 37.0
 custom_fonts/font = ExtResource( 4 )
-text = "Press space to start"
+text = "Press "
 align = 1
+
+[node name="Label2" type="Label" parent="Instructions/HBoxContainer"]
+margin_left = 176.0
+margin_right = 335.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 0.913725, 0.25098, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "space"
+
+[node name="Label3" type="Label" parent="Instructions/HBoxContainer"]
+margin_left = 339.0
+margin_right = 587.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 4 )
+text = " to start"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Instruction")
+root_node = NodePath("../Instructions/HBoxContainer/Label")
 anims/RESET = SubResource( 1 )
 anims/float = SubResource( 2 )
-
-[node name="Instruction2" type="Label" parent="."]
-visible = false
-margin_top = 306.0
-margin_right = 666.0
-margin_bottom = 343.0
-custom_fonts/font = ExtResource( 4 )
-text = "Press alt for tutorial"
-align = 1
