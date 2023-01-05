@@ -149,7 +149,7 @@ func _on_Core_destroyed():
 	_game_over.update_score(points)
 	_game_over.show()
 	
-	_bgm.set_loop("End")
+	_bgm.stop()
 
 
 func _on_BufferTimer_timeout() -> void:

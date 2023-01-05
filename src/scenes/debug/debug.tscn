@@ -11,7 +11,7 @@
 [ext_resource path="res://etc/tech_label/tech_label.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/settings/settings.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/instructions/instructions.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/bgm/evalution.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/bgm/Eva-lution.wav" type="AudioStream" id=12]
 [ext_resource path="res://scenes/debug/bgm.gd" type="Script" id=13]
 
 [sub_resource type="Curve2D" id=1]
@@ -94,9 +94,9 @@ margin_bottom = 691.0
 unique_name_in_owner = true
 visible = false
 margin_left = 412.0
-margin_top = 307.0
+margin_top = 284.0
 margin_right = 1508.0
-margin_bottom = 772.0
+margin_bottom = 795.0
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource( 10 )]
 anchor_left = 0.01

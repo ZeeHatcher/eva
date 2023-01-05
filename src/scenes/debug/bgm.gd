@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 var states = {"Start": 0, "Main": 1, "End": 2}
-var loops = {0: [0, 16], 1: [16, 80], 2: [80, 90]}
+var loops = {0: [14, 30], 1: [32, 96], 2: [96, 100]}
 
 var current_state = 0
 
