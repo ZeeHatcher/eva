@@ -1,16 +1,13 @@
 extends CanvasLayer
 
-var a = preload("res://particles/circle_burst.tscn")
-var b = preload("res://particles/circle_burst_2.tscn")
-var c = preload("res://particles/heal_aura.tscn")
-var d = preload("res://particles/lightning.tscn")
-var e = preload("res://particles/lightning_aura.tscn")
-var f = preload("res://particles/pellet_spray.tscn")
-var g = preload("res://particles/triangle_burst.tscn")
-
-
 var materials = [
-	a,b,c,d,e,f,g
+	preload("res://particles/circle_burst.tres"),
+	preload("res://particles/circle_burst_2.tres"),
+	preload("res://particles/heal_aura.tres"),
+	preload("res://particles/lightning.tres"),
+	preload("res://particles/lightning_aura.tres"),
+	preload("res://particles/pellet_spray.tres"),
+	preload("res://particles/triangle_burst.tres"),
 ]
 
 func _ready():
