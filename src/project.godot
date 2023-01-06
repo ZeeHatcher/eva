@@ -93,6 +93,10 @@ run/main_scene="res://scenes/debug/debug.tscn"
 
 default_bus_layout="res://assets/sfx/default_bus_layout.tres"
 
+[autoload]
+
+ParticleCache="*res://particles/particle_cache.tscn"
+
 [debug]
 
 gdscript/warnings/narrowing_conversion=false
