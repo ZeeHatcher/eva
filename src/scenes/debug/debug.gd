@@ -31,7 +31,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not event is InputEventKey:
+	if not OS.is_debug_build() or not event is InputEventKey:
 		return
 	
 	if event.scancode == KEY_Q and event.pressed:
